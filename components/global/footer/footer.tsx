@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { GoMail } from "react-icons/go";
@@ -12,6 +11,9 @@ export const Footer: React.FC = () => {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  const date = new Date();
+  const year = date.getFullYear();
 
   return (
     <footer className="text-center bg-transparent text-white left-0 bottom-0 right-0 relative">
@@ -110,7 +112,7 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="text-center p-4">
-        © 2022 Made with{" "}
+        © {year} Made with{" "}
         <Link
           href="/"
           className="text-red-500 transition-all duration-700 hover:duration-100 hover:scale-75"
