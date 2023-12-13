@@ -10,7 +10,8 @@ export default function Home() {
         currentPage="home"
         meta={{ desc: "Andrew Edwards - Web Developer" }}
       >
-        <p>Test</p>
+        <div className="h-16"></div>
+        <p className="h-32 text-white font-serif text-2xl">Test</p>
       </Page>
     </>
   );
