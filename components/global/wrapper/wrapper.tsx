@@ -45,7 +45,7 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
   }, [darkModeActual]);
 
   return (
-    <div>
+    <div className="bg-slate-200 dark:bg-gray-800">
       <Head>
         <title>{pageTitle}</title>
         <meta name="title" content={pageTitle} />
@@ -53,8 +53,8 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
       </Head>
 
       <main>
-        <nav className="fixed top-0 right-0 left-0 h-16 inline-flex items-center justify-between z-30 ae-nav border border-black">
-          <div className="hidden md:inline-flex w-full items-center justify-between">
+        <nav className="fixed top-0 right-0 left-0 h-16 inline-flex  items-center justify-between z-30 ae-nav border border-black">
+          <div className="hidden md:inline-flex w-full items-center justify-between pb-2">
             <Navbar
               currentPage={currentPage}
               darkModeValue={darkModeActual}
