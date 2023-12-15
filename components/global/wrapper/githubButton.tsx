@@ -1,21 +1,21 @@
 import React from "react";
 import Image from "next/image";
+import { FaGithub } from "react-icons/fa";
 
-export const Github = () => {
+interface GithubProps {
+  darkMode: boolean;
+}
+
+export const Github = ({ darkMode }: GithubProps) => {
   return (
-    <div className="fixed right-0 bottom-0 md:bottom-0 w-36 md:w-64 md:right-0 text-center sm:text-right sm:-mt-12 z-50">
+    <div className="fixed right-2 bottom-2  md:bottom-2  w-36 md:w-64 md:right-2 text-center sm:text-right sm:-mt-12 z-50">
       <a
-        className="w-auto inline-flex items-center sm:w-auto font-bold flex-shrink hover:scale-90 border-gray-800 text-xs text-lime-500 border px-4 py-2 rounded-3xl cursor-pointer"
+        className="w-auto inline-flex items-center sm:w-auto font-bold flex-shrink hover:scale-90 border-lime-500 text-xs text-black dark:text-white border px-4 py-2 rounded-3xl cursor-pointer"
         href="https://github.com/Andrew87E/Edwards.codes"
         target="_blank"
         rel="nooreferrer noreferrer"
       >
-        <Image
-          src="/icons/github-icon.svg"
-          width={16}
-          height={16}
-          alt="Github Icon"
-        />
+        <FaGithub width={16} height={16} />
         <span className="ml-2">View Source Code </span>
       </a>
     </div>

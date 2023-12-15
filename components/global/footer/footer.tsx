@@ -3,6 +3,7 @@ import { GoMail } from "react-icons/go";
 import { AiOutlineFilePdf, AiFillGithub } from "react-icons/ai";
 import { BsLinkedin } from "react-icons/bs";
 import { Tooltip } from "react-tooltip";
+import FooterButton from "./footerbuttons";
 
 export const Footer: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -19,93 +20,44 @@ export const Footer: React.FC = () => {
       <div className="justify-center px-6 pt-6">
         <div className="flex justify-center mb-1">
           {isMounted && (
-            <>
-              <a
-                href="mailto: Andrew@Edwards.codes"
-                type="button"
-                className="rounded-full border-2 border-white text-white dark:text-black leading-normal uppercase hover:scale-110 hover:border-green-500 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1 justify-center"
-                rel="noopener noreferrer"
-                target="_blank"
-                id="email"
-                data-tooltip-id="email"
-                data-tooltip-content="Send me an e-mail"
-                data-tooltip-variant={`${
-                  document.body.classList.contains("dark") ? "light" : "dark"
-                }`}
-              >
-                <GoMail className="w-4 h-full mx-auto ae-links" color="lime" />
-              </a>
-              <Tooltip id="email" place="top" />
-            </>
+            <FooterButton
+              toltipContent="Send me an e-mail"
+              toltipId="email"
+              link="mailto: Andrew@Edwards.codes"
+              icon={
+                <GoMail className="w-4 h-full mx-auto ae-links text-black dark:text-lime-500" />
+              }
+            />
           )}
           {isMounted && (
-            <>
-              <a
-                href="https://drive.google.com/file/d/1V-FB3ul7itm1nOFTeuD4GIbM540A16Q2/view?usp=share_link"
-                type="button"
-                className="rounded-full border-2 border-white text-white dark:text-black leading-normal uppercase hover:scale-110 hover:border-green-500 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1 justify-center"
-                rel="noopener noreferrer"
-                target="_blank"
-                id="resume"
-                data-tooltip-id="resume"
-                data-tooltip-content="Download my resume"
-                data-tooltip-variant={`${
-                  document.body.classList.contains("dark") ? "light" : "dark"
-                }`}
-              >
-                <AiOutlineFilePdf
-                  className="w-4 h-full mx-auto ae-links"
-                  color="lime"
-                />
-              </a>
-              <Tooltip id="resume" place="top" />
-            </>
+            <FooterButton
+              toltipContent="View my Resume"
+              toltipId="resume"
+              link="/resume.pdf"
+              icon={
+                <AiOutlineFilePdf className="w-4 h-full mx-auto ae-links text-black dark:text-lime-500" />
+              }
+            />
           )}
           {isMounted && (
-            <>
-              <a
-                href="https://www.linkedin.com/in/andrew-edwards-34a927a5/"
-                type="button"
-                className="rounded-full border-2 border-white text-white dark:text-black leading-normal uppercase hover:scale-110 hover:border-green-500 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1 justify-center"
-                rel="noopener noreferrer"
-                target="_blank"
-                id="linkedin"
-                data-tooltip-id="linkedin"
-                data-tooltip-content="View My Linkedin Profile"
-                data-tooltip-variant={`${
-                  document.body.classList.contains("dark") ? "light" : "dark"
-                }`}
-              >
-                <BsLinkedin
-                  className="w-4 h-full mx-auto ae-links"
-                  color="lime"
-                />
-              </a>
-              <Tooltip id="linkedin" place="top" />
-            </>
+            <FooterButton
+              toltipContent="View my Github"
+              toltipId="github"
+              link="https://www.linkedin.com/in/andrew-edwards-34a927a5/"
+              icon={
+                <BsLinkedin className="w-4 h-full mx-auto ae-links text-black dark:text-lime-500" />
+              }
+            />
           )}
           {isMounted && (
-            <>
-              <a
-                href="https://github.com/andrew87e"
-                type="button"
-                className="rounded-full border-2 border-white text-white dark:text-black leading-normal uppercase hover:scale-110 hover:border-green-500 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1 justify-center"
-                rel="noopener noreferrer"
-                target="_blank"
-                id="github"
-                data-tooltip-id="github"
-                data-tooltip-content="View my Github"
-                data-tooltip-variant={`${
-                  document.body.classList.contains("dark") ? "light" : "dark"
-                }`}
-              >
-                <AiFillGithub
-                  className="w-4 h-full mx-auto ae-links"
-                  color="lime"
-                />
-              </a>
-              <Tooltip id="github" place="top" />
-            </>
+            <FooterButton
+              toltipContent="View my Github"
+              toltipId="github"
+              link="https://github.com/andrew87e"
+              icon={
+                <AiFillGithub className="w-4 h-full mx-auto ae-links text-black dark:text-lime-500" />
+              }
+            />
           )}
         </div>
       </div>
@@ -133,7 +85,7 @@ export const Footer: React.FC = () => {
           <Tooltip id="coffee" place="top" />
         </div>
       )}
-      <div className="text-center p-4">
+      <div className="text-center p-4 dark:text-white text-black">
         © {year}
         <a
           className="text-black dark:text-white hover:text-green-500"
@@ -144,7 +96,7 @@ export const Footer: React.FC = () => {
             return (
               <span
                 key={index}
-                className="font-mono transition-all duration-700 hover:duration-100 hover:scale-125 hover:text-lime-500 text-white dark:text-black dark:hover:text-lime-500"
+                className="font-mono transition-all duration-700 hover:duration-100 hover:scale-125 hover:text-lime-500 dark:text-white text-black dark:hover:text-lime-500"
               >
                 {letter}
               </span>

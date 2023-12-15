@@ -53,7 +53,7 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
       </Head>
 
       <main>
-        <nav className="fixed top-0 right-0 left-0 h-16 inline-flex  items-center justify-between z-30 ae-nav border border-black">
+        <nav className="fixed top-0 right-0 left-0 h-16 inline-flex  items-center justify-between z-30 bg-lightbg dark:bg-darkbg">
           <div className="hidden md:inline-flex w-full items-center justify-between pb-2">
             <Navbar
               currentPage={currentPage}
@@ -62,13 +62,17 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
             />
           </div>
           <div className="inline-flex justify-between md:hidden w-full items-center">
-            <MobileMenu currentPage={currentPage} />
+            <MobileMenu
+              currentPage={currentPage}
+              darkModeValue={darkModeActual}
+              darkModeHandle={handleDarkChange}
+            />
           </div>
         </nav>
 
         {children}
       </main>
-      <Github />
+      <Github darkMode={darkModeActual} />
       <Footer />
     </div>
   );

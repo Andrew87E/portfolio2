@@ -12,7 +12,8 @@ module.exports = {
     extend: {
       colors: {
         primary: "#ff6363", // teal
-        secondary: { 100: "#e2e2d5", 200: "#888883" }, // gray shades
+        lightbg: "rgb(226 232 240 / 1)",
+        darkbg: "rgb(31 41 55 / 1)",
       },
       fontFamily: {
         header: ["Roboto Mono", "monospace"],
@@ -31,8 +32,8 @@ module.exports = {
           "100%": { transform: "translateX(0)" },
         },
         "slide-out": {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(50%)" },
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
         },
       },
     },
