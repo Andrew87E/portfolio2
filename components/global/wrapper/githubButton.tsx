@@ -11,7 +11,7 @@ export const Github = ({ darkMode }: GithubProps) => {
     <div className="fixed right-2 bottom-2  md:bottom-2  w-36 md:w-64 md:right-2 text-center sm:text-right sm:-mt-12 z-50">
       <a
         className="w-auto inline-flex items-center sm:w-auto font-bold flex-shrink hover:scale-90 border-lime-500 text-xs text-black dark:text-white border px-4 py-2 rounded-3xl cursor-pointer"
-        href="https://github.com/Andrew87E/Edwards.codes"
+        href="https://github.com/Andrew87E/portfolio2"
         target="_blank"
         rel="nooreferrer noreferrer"
       >
