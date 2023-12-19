@@ -25,10 +25,10 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
   }`;
 
   const handleDarkChange = () => {
-    setDarkMode(!darkModeActual);
     localStorage.setItem("color-theme", darkModeActual ? "light" : "dark");
-    console.log(darkModeActual);
+    setDarkMode(!darkModeActual);
     document.body.classList.toggle("dark");
+    console.log("this hits");
   };
 
   const handleClickForMobile = () => {
@@ -46,14 +46,18 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
 
     if (userPrefersDark || localPref === "dark") {
       setDarkMode(true);
+      localStorage.setItem("color-theme", "dark");
+      document.body.classList.add("dark");
     } else {
       setDarkMode(false);
+      localStorage.setItem("color-theme", "light");
+      document.body.classList.remove("dark");
     }
-  }, [darkModeActual]);
+  }, []);
 
   return (
     <div
-      className="bg-slate-200 dark:bg-gray-800"
+      className={`bg-slate-200 dark:bg-gray-800  transition-colors duration-500 ease-in-out `}
       onClick={handleClickForMobile}
     >
       <Head>

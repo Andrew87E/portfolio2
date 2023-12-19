@@ -1,16 +1,12 @@
 import Link from "next/link";
 import { routes } from "../../../data/global";
 import { Name } from "./name";
+import { FiSun, FiMoon } from "react-icons/fi";
 import { Tooltip } from "react-tooltip";
-import Image from "next/image";
-import Toggle from "react-toggle";
-import { PiSunBold } from "react-icons/pi";
-import { RiMoonLine } from "react-icons/ri";
-import React, { Dispatch, SetStateAction, useState } from "react";
 
 interface NavbarProps {
-  currentPage: any; // Replace 'any' with the type of currentPage
-  darkModeHandle: () => void;
+  currentPage: any; // TODO: Replace 'any' with the type of currentPage
+  darkModeHandle: any;
   darkModeValue: boolean;
 }
 
@@ -23,27 +19,6 @@ export const Navbar = ({
     <>
       <Name />
       <ul className="nav-menu inline-flex mr-4 flex-wrap text-lg lg:text-xl 2xl:text-2xl bg-lightbg dark:bg-darkbg">
-        <li className={`mr-5 transition-all duration-700  mt-5`}>
-          <Toggle
-            defaultChecked={darkModeValue}
-            icons={{
-              checked: null,
-              unchecked: null,
-            }}
-            onChange={darkModeHandle}
-            height={50}
-            className={`dark-toggle`}
-            data-tooltip-id="dark-mode"
-            data-tooltip-content="Toggle dark mode"
-            onClick={() => {
-              const tooltip = document.getElementById("dark-mode");
-              tooltip?.classList.remove("react-tooltip__show");
-            }}
-          />
-
-          {/* <span>Custom icons</span> */}
-          {/* <Tooltip id="dark-mode" place="bottom" /> */}
-        </li>
         {routes.map((item, index) => {
           return (
             <li
@@ -58,6 +33,21 @@ export const Navbar = ({
             </li>
           );
         })}
+        <li className={` transition-all duration-700`}>
+          <button
+            className={`rounded-full shadow-2xl border-2 border-black dark:border-white uppercase hover:scale-110 hover:border-green-500 focus:outline-none focus:ring-0 transition ease-in-out w-9 h-9 mt-4`}
+            onClick={darkModeHandle}
+            data-tooltip-id="dark-mode"
+            data-tooltip-content="Toggle dark mode"
+          >
+            {darkModeValue ? (
+              <FiSun className="w-6 h-full m-auto ae-links text-yellow-500" />
+            ) : (
+              <FiMoon className="w-6 h-full m-auto ae-links text-black " />
+            )}
+          </button>
+          <Tooltip id="dark-mode" place="bottom" />
+        </li>
       </ul>
     </>
   );

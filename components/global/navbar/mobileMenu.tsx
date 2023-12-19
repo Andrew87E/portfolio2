@@ -7,8 +7,8 @@ import { Name } from "./name";
 import Toggle from "react-toggle";
 
 interface MobileMenuProps {
-  currentPage: any; // Replace 'any' with the type of currentPage
-  darkModeHandle: () => void;
+  currentPage: any; // TODO: Replace 'any' with the type of currentPage
+  darkModeHandle: any;
   darkModeValue: boolean;
   showMenu: boolean;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
