@@ -24,7 +24,7 @@ module.exports = {
       },
       animation: {
         "slide-in": "slide-in 1s ease-in-out",
-        "slide-out": "slide-out 1s ease-in-out",
+        "slide-out": "slide-out 0.7s ease-in-out",
       },
       keyframes: {
         "slide-in": {
@@ -32,8 +32,8 @@ module.exports = {
           "100%": { transform: "translateX(0)" },
         },
         "slide-out": {
-          "0%": { transform: "translateX(-100%)" },
-          "100%": { transform: "translateX(0)" },
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(100%)" },
         },
       },
     },

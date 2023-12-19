@@ -50,7 +50,7 @@ export const Navbar = ({
               key={index}
               className={`mr-5 transition-all duration-700 hover:duration-100 hover:scale-125 mt-4 font-header ${
                 currentPage === item.title
-                  ? "text-lime-500 hover:text-white border-b border-black dark:border-white"
+                  ? "text-green-700 dark:text-lime-500 hover:text-white border-b border-black dark:border-white"
                   : "opacity-70 hover:opacity-100 transition-opacity dark:text-white hover:text-white hover:border-gray-300"
               }`}
             >
