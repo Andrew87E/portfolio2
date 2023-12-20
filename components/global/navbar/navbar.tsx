@@ -3,6 +3,7 @@ import { routes } from "../../../data/global";
 import { Name } from "./name";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { Tooltip } from "react-tooltip";
+import { firaCode, glory } from "../fonts/fonts";
 
 interface NavbarProps {
   currentPage: any; // TODO: Replace 'any' with the type of currentPage
@@ -18,35 +19,38 @@ export const Navbar = ({
   return (
     <>
       <Name />
-      <ul className="nav-menu inline-flex mr-4 flex-wrap text-lg lg:text-xl 2xl:text-2xl bg-lightbg dark:bg-darkbg">
+      <ul className="inline-flex mr-4 flex-wrap text-lg mt-4 lg:text-xl 2xl:text-3xl bg-lightbg dark:bg-darkbg">
         {routes.map((item, index) => {
           return (
             <li
               key={index}
-              className={`mr-5 transition-all duration-700 hover:duration-100 hover:scale-125 mt-4 font-header ${
+              // align everything in the center/middle
+              className={`mr-3 transition-all duration-700 hover:scale-105 ${
+                glory.className
+              } ${
                 currentPage === item.title
-                  ? "text-green-700 dark:text-lime-500 hover:text-white border-b border-black dark:border-white"
-                  : "opacity-70 hover:opacity-100 transition-opacity dark:text-white hover:text-white hover:border-gray-300"
+                  ? `text-green-700 dark:text-lime-500 hover:text-lime-800 hover:animate-pulse`
+                  : `opacity-70 hover:opacity-100 transition-opacity dark:text-white hover:text-white hover:border-gray-300 hover:duration-100 `
               }`}
             >
               <Link href={item.path}>{item.title}</Link>
             </li>
           );
         })}
-        <li className={` transition-all duration-700`}>
+        <li className={`transition-all duration-700`}>
           <button
-            className={`rounded-full shadow-2xl border-2 border-black dark:border-white uppercase hover:scale-110 hover:border-green-500 focus:outline-none focus:ring-0 transition ease-in-out w-9 h-9 mt-4`}
+            className={`rounded-full shadow-2xl border-2 hover:animate-pulse border-black dark:border-white uppercase hover:scale-105 hover:border-green-500 dark:hover:border-green-500 focus:outline-none focus:ring-0 transition ease-in-out 2xl:w-8 2xl:h-8 p-1`}
             onClick={darkModeHandle}
             data-tooltip-id="dark-mode"
             data-tooltip-content="Toggle dark mode"
           >
             {darkModeValue ? (
-              <FiSun className="w-6 h-full m-auto ae-links text-yellow-500" />
+              <FiSun className="text-yellow-500" size={20} />
             ) : (
-              <FiMoon className="w-6 h-full m-auto ae-links text-black " />
+              <FiMoon className="text-black" size={20} />
             )}
           </button>
-          <Tooltip id="dark-mode" place="bottom" />
+          {/* <Tooltip id="dark-mode" place="bottom" /> */}
         </li>
       </ul>
     </>

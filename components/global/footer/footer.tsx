@@ -61,7 +61,7 @@ export const Footer: React.FC = () => {
           )}
         </div>
       </div>
-      {isMounted && (
+      {/* {isMounted && (
         <div className="w-44 mx-auto">
           <a
             href="https://www.buymeacoffee.com/andrew87e"
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
           </a>
           <Tooltip id="coffee" place="top" />
         </div>
-      )}
+      )} */}
       <div className="text-center p-4 dark:text-white text-black">
         © {year}
         <a

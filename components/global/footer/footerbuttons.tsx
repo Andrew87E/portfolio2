@@ -1,5 +1,6 @@
 import React from "react";
 import { Tooltip } from "react-tooltip";
+import { motion, useAnimation } from "framer-motion";
 
 interface FooterButtonProps {
   toltipContent: string;
@@ -14,6 +15,8 @@ const FooterButton = ({
   link,
   icon,
 }: FooterButtonProps) => {
+ 
+
   return (
     <>
       <a
