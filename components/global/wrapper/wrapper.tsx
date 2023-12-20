@@ -29,6 +29,8 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
     setDarkMode(!darkModeActual);
     document.body.classList.toggle("dark");
     console.log("this hits");
+    document.body.classList.toggle("bg-gray-800");
+    document.body.classList.toggle("bg-slate-200");
   };
 
   const handleClickForMobile = () => {
@@ -47,11 +49,15 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
     if (userPrefersDark || localPref === "dark") {
       setDarkMode(true);
       localStorage.setItem("color-theme", "dark");
+      document.body.classList.remove("bg-slate-200");
       document.body.classList.add("dark");
+      document.body.classList.add("bg-gray-800");
     } else {
       setDarkMode(false);
       localStorage.setItem("color-theme", "light");
+      document.body.classList.add("bg-slate-200");
       document.body.classList.remove("dark");
+      document.body.classList.remove("bg-gray-800");
     }
   }, []);
 
