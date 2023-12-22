@@ -19,7 +19,7 @@ export const Navbar = ({
   return (
     <>
       <Name />
-      <ul className="inline-flex mr-4 flex-wrap text-lg mt-4 lg:text-xl 2xl:text-3xl bg-lightbg dark:bg-darkbg">
+      <ul className="inline-flex mr-4 flex-wrap text-lg mt-4 lg:text-xl 2xl:text-3xl">
         {routes.map((item, index) => {
           return (
             <li

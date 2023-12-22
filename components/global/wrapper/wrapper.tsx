@@ -90,7 +90,9 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
 
   return (
     <div
-      className={`bg-slate-200 dark:bg-gray-800  transition-colors duration-500 ease-in-out `}
+      className={`transition-colors duration-500 ease-in-out ${
+        !darkModeActual ? `bg-slate-200` : `ae-dark-radial-grey`
+      } }`}
       onClick={handleClickForMobile}
     >
       <Head>
@@ -110,7 +112,7 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
             delay: 0,
             duration: 0.5,
           }}
-          className={`fixed top-0 right-0 left-0 h-16 inline-flex  items-center justify-between z-30 bg-lightbg dark:bg-darkbg `}
+          className={`fixed top-0 right-0 left-0 h-16 inline-flex  items-center justify-between z-30`}
           id="navBar"
         >
           <div className="hidden md:inline-flex w-full items-center justify-between pb-2">
