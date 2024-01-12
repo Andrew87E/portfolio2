@@ -15,17 +15,15 @@ type PageProps = {
   children?: JSX.Element | React.ReactNode;
 };
 
-export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
+export const Page = ({
+  currentPage,
+  meta: { title, desc },
+  children,
+}: PageProps) => {
   const [darkModeActual, setDarkMode] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const controls = useAnimation();
-
-  const pageTitle = `${
-    currentPage === "Home"
-      ? "Andrew Edwards - Software Enginner for hire."
-      : `${currentPage} - Edwards.codes`
-  }`;
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
@@ -96,9 +94,19 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
       onClick={handleClickForMobile}
     >
       <Head>
-        <title>{pageTitle}</title>
-        <meta name="title" content={pageTitle} />
+        <title>{title}</title>
+        <meta name="title" content={title} />
         <meta name="description" content={desc} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://edwards.codes" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={desc} />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://edwards.codes" />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={desc} />
+        <link rel="icon" href="/favicon.ico" />
+      
       </Head>
 
       <main>

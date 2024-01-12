@@ -4,8 +4,8 @@ import { glory } from "../fonts/fonts";
 
 export const Name = () => {
   return (
-    <div className="list-none font-bold text-lg">
-      <Link href="/">
+    <div className="list-none text-lg ml-4">
+      <Link href="/" rel="canonical">
         <span className="flex items-center">
           {/* <Image
             src="/icons/alogo.png"

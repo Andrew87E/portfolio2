@@ -18,9 +18,26 @@ export const Navbar = ({
 }: NavbarProps) => {
   return (
     <>
-      <Name />
-      <ul className="inline-flex mr-4 flex-wrap text-lg mt-4 lg:text-xl 2xl:text-3xl">
+      {currentPage == "Home" ? <section /> : <Name />}
+      <ul className="inline-flex mr-4 flex-wrap mt-4 text-md lg:text-lg 2xl:text-2xl">
+        <li className={`transition-all duration-700 mr-4`}>
+          <button
+            className={`rounded-full hover:animate-pulse hover:scale-105 focus:outline-none focus:ring-0 transition ease-in-out`}
+            onClick={darkModeHandle}
+            data-tooltip-id="dark-mode"
+            data-tooltip-content="Toggle dark mode"
+          >
+            {darkModeValue ? (
+              <FiSun className="text-yellow-500" size={30} />
+            ) : (
+              <FiMoon className="fill-slate-400" size={30} />
+            )}
+          </button>
+          {/* <Tooltip id="dark-mode" place="bottom" /> */}
+        </li>
         {routes.map((item, index) => {
+          if (item.title === "Contact") return;
+
           return (
             <li
               key={index}
@@ -33,25 +50,23 @@ export const Navbar = ({
                   : `opacity-90 hover:opacity-100 transition-opacity dark:text-white hover:text-white hover:border-gray-300 hover:duration-100 `
               }`}
             >
-              <Link href={item.path}>{item.title}</Link>
+              <Link href={item.path} rel="canonical">
+                {item.title}
+              </Link>
             </li>
           );
         })}
-        <li className={`transition-all duration-700`}>
-          <button
-            className={`rounded-full shadow-2xl border-2 hover:animate-pulse border-black dark:border-white uppercase hover:scale-105 hover:border-green-500 dark:hover:border-green-500 focus:outline-none focus:ring-0 transition ease-in-out 2xl:w-8 2xl:h-8 p-1`}
-            onClick={darkModeHandle}
-            data-tooltip-id="dark-mode"
-            data-tooltip-content="Toggle dark mode"
-          >
-            {darkModeValue ? (
-              <FiSun className="text-yellow-500" size={20} />
-            ) : (
-              <FiMoon className="text-black" size={20} />
-            )}
-          </button>
-          {/* <Tooltip id="dark-mode" place="bottom" /> */}
-        </li>
+        {currentPage === "Contact" ? null : (
+          <li className={`transition-all duration-700 mr-4 `}>
+            <Link href="/contact" rel="canonical">
+              <button
+                className={`rounded-2xl font-subheader text-sm lg:text-md 2xl:text-xl bg-gradient-to-l from-green-700 to-green-400 hover:bg-gradient-to-r hover:bg-blue500 shadow-sm group px-4 py-1 hover:scale-105 text-white hover:text-white`}
+              >
+                Contact Me
+              </button>
+            </Link>
+          </li>
+        )}
       </ul>
     </>
   );

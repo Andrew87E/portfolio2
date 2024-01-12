@@ -41,8 +41,8 @@ export const Footer: React.FC = () => {
           )}
           {isMounted && (
             <FooterButton
-              toltipContent="View my Github"
-              toltipId="github"
+              toltipContent="View my Linkedin"
+              toltipId="linkedin"
               link="https://www.linkedin.com/in/andrew-edwards-34a927a5/"
               icon={
                 <BsLinkedin className="w-4 h-full mx-auto ae-links text-black dark:text-lime-500" />

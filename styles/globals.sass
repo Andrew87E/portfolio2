@@ -1,8 +1,9 @@
 @tailwind base
 @tailwind components
 @tailwind utilities
-@import "./_variables"
+@import "./variables"
 @import "./toggle"
+@import "./utilities"
 // @import "./animations"
 // @import "./scrollbar"
 // @import "./buttons"
@@ -33,7 +34,6 @@
     padding: 5px
     margin-top: 2px
     margin-bottom: 2px
-    
 
 /* Handle */
 ::-webkit-scrollbar-thumb
@@ -132,6 +132,9 @@
 
 .ae-max-w
     max-width: calc( 100vw - 32px )
+
+.ae-icon-grad
+    fill: radial-gradient($light-green, $dark-green)
 
 // @media screen and (max-width: 768px) {
 //     .ae-nav-menu {
@@ -333,4 +336,3 @@
     -o-transform: rotate(-180deg)
     transform: rotate(-180deg)
     opacity: 0
-
