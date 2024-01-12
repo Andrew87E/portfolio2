@@ -22,7 +22,8 @@ module.exports = {
         header: ["Roboto Mono", "monospace"],
         body: ["Space Grotesk", "sans-serif"],
         body2: ["Poppins", "sans-serif"],
-        subheader: ["Rancho", "cursive"],
+        subheader: ["Assistant", "sans"],
+        lobster: ["Lobster", "cursive"],
         extra: ["Lustria", "serif"],
       },
       animation: {

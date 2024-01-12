@@ -1,24 +1,25 @@
 import { useState } from "react";
 import { Typewriter, AnimatedComponent } from "react-style-text";
+import { homeStrings } from "@/data/static/strings";
 
 export const Jumbotron = () => {
   const [initialAnimationFinished, setInitialAnimationFinished] =
     useState<boolean>(false);
 
   return (
-    <div className="flex flex-col items-center justify-center text-white text-[4rem] border border-lime-500">
-      <section className="text-white  w-full h-full flex flex-row justify-between border-white border ae-max-w">
+    <div className="flex flex-col items-center justify-center text-[4rem]">
+      <section className="dark:text-white  w-full h-full flex flex-row justify-between ae-max-w">
         <AnimatedComponent
           animationname="slideInFromLeft"
           duration="2s"
           delay="0s"
           iteration={1}
         >
-          <h1 className="text-white mt-10">
+          <h1 className="dark:text-white mt-12 font-extra">
             <Typewriter
-              datatext={["afsd", "adsf"]}
+              datatext={homeStrings}
               cursorcolor="green"
-              statictext="Testing"
+              // statictext="Testing"
             />
           </h1>
         </AnimatedComponent>
@@ -28,7 +29,7 @@ export const Jumbotron = () => {
           delay="0s"
           iteration={1}
         >
-          <h1 className="text-white mt-10">Testing</h1>
+          <h1 className="dark:text-white mt-12 font-extra">Testing</h1>
         </AnimatedComponent>
       </section>
     </div>

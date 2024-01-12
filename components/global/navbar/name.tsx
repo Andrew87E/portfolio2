@@ -7,14 +7,13 @@ export const Name = () => {
     <div className="list-none font-bold text-lg">
       <Link href="/">
         <span className="flex items-center">
-          <figure className="cursor-pointer transform hover:scale-75 transition-transform duration-800 bg-transparent mt-1 animate-spin">
-            <Image
-              src="/icons/portfolio-logo.svg"
-              width="70"
-              height="40"
-              alt="That's a me!"
-            />
-          </figure>
+          {/* <Image
+            src="/icons/alogo.png"
+            width="70"
+            height="40"
+            alt="That's a me!"
+            className="-mr-4 hover:duration-100 hover:scale-125 hover:translate-y-1 hover:animate-pulse"
+          /> */}
           {"Andrew".split("").map((letter, index) => {
             return (
               <span

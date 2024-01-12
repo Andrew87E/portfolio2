@@ -23,7 +23,7 @@ export const Page = ({ currentPage, meta: { desc }, children }: PageProps) => {
 
   const pageTitle = `${
     currentPage === "Home"
-      ? "Andrew Edwards - Web Developer"
+      ? "Andrew Edwards - Software Enginner for hire."
       : `${currentPage} - Edwards.codes`
   }`;
 
