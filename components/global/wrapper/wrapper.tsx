@@ -48,10 +48,10 @@ export const Page = ({
   }, [lastScrollY, controls]);
 
   const handleDarkChange = () => {
+    // TODO: fix local storage priority over os preference
     localStorage.setItem("color-theme", darkModeActual ? "light" : "dark");
     setDarkMode(!darkModeActual);
     document.body.classList.toggle("dark");
-    console.log("this hits");
     document.body.classList.toggle("bg-gray-800");
     document.body.classList.toggle("bg-slate-200");
   };
@@ -67,21 +67,23 @@ export const Page = ({
       // we only want to run this on initial page load
       // check if user has set a preference for dark mode
       const localPref = localStorage.getItem("color-theme");
-      const userPrefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      if (userPrefersDark || localPref === "dark") {
-        setDarkMode(true);
-        localStorage.setItem("color-theme", "dark");
-        document.body.classList.remove("bg-slate-200");
-        document.body.classList.add("dark");
-        document.body.classList.add("bg-gray-800");
-      } else {
-        setDarkMode(false);
-        localStorage.setItem("color-theme", "light");
-        document.body.classList.add("bg-slate-200");
-        document.body.classList.remove("dark");
-        document.body.classList.remove("bg-gray-800");
+      if (!localPref) {
+        const userPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (userPrefersDark || localPref === "dark") {
+          setDarkMode(true);
+          localStorage.setItem("color-theme", "dark");
+          document.body.classList.remove("bg-slate-200");
+          document.body.classList.add("dark");
+          document.body.classList.add("bg-gray-800");
+        } else {
+          setDarkMode(false);
+          localStorage.setItem("color-theme", "light");
+          document.body.classList.add("bg-slate-200");
+          document.body.classList.remove("dark");
+          document.body.classList.remove("bg-gray-800");
+        }
       }
     }
   }, []);
@@ -106,7 +108,6 @@ export const Page = ({
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={desc} />
         <link rel="icon" href="/favicon.ico" />
-      
       </Head>
 
       <main>
