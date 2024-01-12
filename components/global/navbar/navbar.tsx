@@ -30,7 +30,7 @@ export const Navbar = ({
               } ${
                 currentPage === item.title
                   ? `text-green-700 dark:text-lime-500 hover:text-lime-800 hover:animate-pulse`
-                  : `opacity-70 hover:opacity-100 transition-opacity dark:text-white hover:text-white hover:border-gray-300 hover:duration-100 `
+                  : `opacity-90 hover:opacity-100 transition-opacity dark:text-white hover:text-white hover:border-gray-300 hover:duration-100 `
               }`}
             >
               <Link href={item.path}>{item.title}</Link>

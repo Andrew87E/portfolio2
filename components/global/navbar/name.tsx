@@ -19,7 +19,7 @@ export const Name = () => {
             return (
               <span
                 key={index}
-                className={`cursor-pointer transition-all duration-700 hover:duration-100 hover:scale-125 hover:translate-y-1 hover:text-lime-500 opacity-70 dark:text-white text-xl lg:text-2xl 2xl:text-4xl hover:animate-pulse ${glory.className}`}
+                className={`cursor-pointer transition-all duration-700 hover:duration-100 hover:scale-125 hover:translate-y-1 hover:text-lime-500 opacity-90 dark:text-white text-xl lg:text-2xl 2xl:text-4xl hover:animate-pulse ${glory.className}`}
               >
                 {letter}
               </span>

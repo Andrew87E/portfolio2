@@ -7,11 +7,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <Page currentPage="Home" meta={{ desc: "Andrew Edwards - Web Developer" }}>
-      <div className="h-64"></div>
-      <section className="flex">
+      <div className="w-full h-96">
         <Jumbotron />
-      </section>
-      <div className="h-64"></div>
+      </div>
     </Page>
   );
 }
