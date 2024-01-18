@@ -8,8 +8,7 @@ import { AnimatedComponent } from "react-style-text";
 // const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [initialAnimationFinished, setInitialAnimationFinished] =
-    useState(false);
+  // const [initialAnimationFinished, setInitialAnimationFinished] = useState(false);
 
   return (
     <Page
@@ -30,29 +29,18 @@ export default function Home() {
             iteration={1}
           >
             <h1 className="mt-28 dark:text-white font-header ml-4 cursor-default flex">
-              {/* {"Hi, I'm Andrew.".split(" ").map((word, i) => (
-                <AnimatedComponent
-                  key={word}
-                  className={``}
-                  animationname="flipIn"
-                  duration="1s"
-                  timing="ease-in-out"
-                  iteration={1}
-                  delay={`${i + 1}s`}
-                >
-                  {word}&nbsp;
-                </AnimatedComponent>
-              ))} */}
               Hi, I'm Andrew.
             </h1>
           </AnimatedComponent>
-          <article className="flex flex-row max-w-[50vw] mt-10 mb-40">
+          {/*
+           <article className="flex flex-row max-w-[50vw] mt-10 mb-40">
             <p className="text-wrap text-2xl dark:text-white mb-8 mt-2 font-body ml-4">
               I&apos;m a software engineer with a passion for building a wide
               range of applications. From native mobile to Flutter, web, and
               backend servers, I&apos;ve got you covered.
             </p>
-          </article>
+          </article> 
+          */}
         </section>
       </section>
     </Page>
