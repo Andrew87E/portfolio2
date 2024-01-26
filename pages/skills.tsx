@@ -25,7 +25,7 @@ export default function Skills() {
             body="Occaecat labore magna deserunt eiusmod veniam reprehenderit cillum proident ut incididunt consequat culpa."
             link="/prof"
             img={{
-              src: "/images/andrew.jpg",
+              src: "/images/035.jpg",
               alt: "Andrew Edwards",
             }}
             badges={["Flutter", "Dart", "Firebase"]}

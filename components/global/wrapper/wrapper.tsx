@@ -4,7 +4,7 @@ import { Footer } from "../footer/footer";
 import { Github } from "./githubButton";
 import { MobileMenu } from "../navbar/mobileMenu";
 import { Navbar } from "../navbar/navbar";
-import { motion, useAnimation } from "framer-motion";
+import { useAnimation } from "framer-motion";
 
 type PageProps = {
   currentPage: string;
@@ -127,17 +127,7 @@ export const Page = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <motion.main
-        initial={{ x: 300, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: 300, opacity: 0 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20,
-          duration: 1,
-        }}
-      >
+      <main>
         <nav
           className={`fixed top-0 right-0 left-0 h-16 inline-flex  items-center justify-between z-30`}
           id="navBar"
@@ -161,7 +151,7 @@ export const Page = ({
         </nav>
 
         {children}
-      </motion.main>
+      </main>
       <Github />
       <Footer />
     </div>

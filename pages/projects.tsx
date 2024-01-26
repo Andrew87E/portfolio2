@@ -20,7 +20,8 @@ export default function Projects() {
       <section className="w-full">
         <div className="mt-96"></div>
         <div className="h-96 p-6">
-          <SpotlightCard
+          {/* <SpotlightCard
+            key={1}
             title="Testing"
             body="Occaecat labore magna deserunt eiusmod veniam reprehenderit cillum proident ut incididunt consequat culpa."
             link="/prof"
@@ -29,7 +30,7 @@ export default function Projects() {
               alt: "Andrew Edwards",
             }}
             badges={["Flutter", "Dart", "Firebase"]}
-          />
+          /> */}
         </div>
         <div className="mt-96"></div>
       </section>
