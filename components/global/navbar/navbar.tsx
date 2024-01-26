@@ -60,7 +60,7 @@ export const Navbar = ({
           <li className={`transition-all duration-700 mr-4 `}>
             <Link href="/contact" rel="canonical">
               <button
-                className={`rounded-2xl font-subheader text-sm lg:text-md 2xl:text-xl bg-gradient-to-l from-green-700 to-green-400 hover:bg-gradient-to-r hover:bg-blue500 shadow-sm group px-4 py-1 hover:scale-105 text-white hover:text-white`}
+                className={`rounded-2xl font-subheader text-sm lg:text-md 2xl:text-xl border border-lime-500 bg-transparent shadow-sm group px-4 py-1 hover:scale-105 text-white hover:text-white`}
               >
                 Contact Me
               </button>

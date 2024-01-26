@@ -50,10 +50,10 @@ export const Page = ({
   const handleDarkChange = () => {
     // TODO: fix local storage priority over os preference
     localStorage.setItem("color-theme", darkModeActual ? "light" : "dark");
-    setDarkMode(!darkModeActual);
     document.body.classList.toggle("dark");
-    document.body.classList.toggle("bg-gray-800");
+    document.body.classList.toggle("bg-black");
     document.body.classList.toggle("bg-slate-200");
+    setDarkMode(!darkModeActual);
   };
 
   const handleClickForMobile = () => {
@@ -67,22 +67,39 @@ export const Page = ({
       // we only want to run this on initial page load
       // check if user has set a preference for dark mode
       const localPref = localStorage.getItem("color-theme");
+      console.log(window.matchMedia("(prefers-color-scheme: dark)"));
+      console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
+
       if (!localPref) {
         const userPrefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)"
         ).matches;
+
         if (userPrefersDark || localPref === "dark") {
+          console.log("this hits");
           setDarkMode(true);
           localStorage.setItem("color-theme", "dark");
           document.body.classList.remove("bg-slate-200");
           document.body.classList.add("dark");
-          document.body.classList.add("bg-gray-800");
+          document.body.classList.add("bg-black");
         } else {
           setDarkMode(false);
           localStorage.setItem("color-theme", "light");
           document.body.classList.add("bg-slate-200");
           document.body.classList.remove("dark");
-          document.body.classList.remove("bg-gray-800");
+          document.body.classList.remove("bg-black");
+        }
+      } else {
+        if (localPref === "dark") {
+          setDarkMode(true);
+          document.body.classList.remove("bg-slate-200");
+          document.body.classList.add("dark");
+          document.body.classList.add("bg-black");
+        } else {
+          setDarkMode(false);
+          document.body.classList.add("bg-slate-200");
+          document.body.classList.remove("dark");
+          document.body.classList.remove("bg-black");
         }
       }
     }
@@ -110,17 +127,18 @@ export const Page = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <motion.nav
-          animate={controls}
-          initial={{ top: "0px" }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 20,
-            delay: 0,
-            duration: 0.5,
-          }}
+      <motion.main
+        initial={{ x: 300, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: 300, opacity: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+          duration: 1,
+        }}
+      >
+        <nav
           className={`fixed top-0 right-0 left-0 h-16 inline-flex  items-center justify-between z-30`}
           id="navBar"
         >
@@ -140,10 +158,10 @@ export const Page = ({
               setShowMenu={setShowMenu}
             />
           </div>
-        </motion.nav>
+        </nav>
 
         {children}
-      </main>
+      </motion.main>
       <Github />
       <Footer />
     </div>

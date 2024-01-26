@@ -1,4 +1,4 @@
-import { Page, Jumbotron } from "@/components";
+import { Page, Jumbotron, SpotlightCard } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -28,7 +28,7 @@ export default function Home() {
             timing="ease-in-out"
             iteration={1}
           >
-            <h1 className="mt-28 dark:text-white font-header ml-4 cursor-default flex">
+            <h1 className="mt-28 text-black dark:text-white font-header ml-4 cursor-default flex">
               Hi, I'm Andrew.
             </h1>
           </AnimatedComponent>
@@ -42,6 +42,9 @@ export default function Home() {
           </article> 
           */}
         </section>
+        <div className="mt-96"></div>
+        <div className="h-96 p-6"></div>
+        <div className="mt-96"></div>
       </section>
     </Page>
   );
