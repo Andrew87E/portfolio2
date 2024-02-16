@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { routes } from "../../../data/global";
 import { HiOutlineX } from "react-icons/hi";
 import { RiMenu3Line } from "react-icons/ri";
@@ -39,7 +39,6 @@ export const MobileMenu = ({
   return (
     <>
       <Name />
-      {/* we need to push this all the way to the right */}
       <div className="w-36"></div>
       <Toggle
         defaultChecked={darkModeValue}

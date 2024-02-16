@@ -12,15 +12,18 @@ module.exports = {
     extend: {
       colors: {
         primary: "rgb(21 128 61 / 1)",
-
         lightbg: "rgb(226 232 240 / 1)",
         darkbg: "rgb(31 41 55 / 1)",
+        bgGradLight: "#131328",
+        bgGradDark: "#01030D",
+        bgGradGrey: "#323234",
       },
       fontFamily: {
         header: ["Roboto Mono", "monospace"],
         body: ["Space Grotesk", "sans-serif"],
         body2: ["Poppins", "sans-serif"],
-        subheader: ["Rancho", "cursive"],
+        subheader: ["Assistant", "sans"],
+        lobster: ["Lobster", "cursive"],
         extra: ["Lustria", "serif"],
       },
       animation: {

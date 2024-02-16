@@ -28,9 +28,17 @@ export const routes: Route[] = [
         title: "Blog",
         path: "/blog",
     },
+    // {
+    //     title: "Games",
+    //     path: "/games",
+    // },
     {
         title: "Skills",
         path: "/skills",
+    },
+    {
+        title: "About Me",
+        path: "/about",
     },
     {
         title: "Contact",

@@ -1,15 +1,21 @@
 @tailwind base
 @tailwind components
 @tailwind utilities
-@import "./_variables"
+@import "./variables"
 @import "./toggle"
-@import url("https://fonts.googleapis.com/css2?family=Lustria&family=Poppins&family=Rancho&family=Roboto+Mono&family=Space+Grotesk:wght@500&display=swap")
+@import "./utilities"
+// @import "./animations"
+// @import "./scrollbar"
+// @import "./buttons"
+@import "./nav"
+@import url("https://fonts.googleapis.com/css2?family=Lustria&family=Poppins&family=Assistant&family=Roboto+Mono&family=Lobster&family=Space+Grotesk:wght@500&display=swap")
 
 // font-family: 'Lustria', serif;
 // font-family: 'Poppins', sans-serif;
-// font-family: 'Rancho', cursive;
+// font-family: 'Assistant', sans-serif;
 // font-family: 'Roboto Mono', monospace;
 // font-family: 'Space Grotesk', sans-serif;
+// font-family: 'Lobster', sans-serif;
 
 // .ae-intro-text {
 //     text-shadow: $light-green 4px 4px;
@@ -17,18 +23,21 @@
 //     text-shadow: 4px 4px 0 $light-green, 6px 6px 0 $dark-green;
 // }
 
+body
+    // overflow-y: hidden /* Hide vertical scrollbar */
+    overflow-x: hidden /* Hide horizontal scrollbar */
+
 /* width */
 ::-webkit-scrollbar
-    width: 10px
-    color: $dark-green
+    width: 0.01px
+    color: $light-green
 
 /* Track */
-::-webkit-scrollbar-track
-    background: #000
-    padding: 5px
-    margin-top: 2px
-    margin-bottom: 2px
-    
+// ::-webkit-scrollbar-track
+//     background: #000
+//     padding: 5px
+//     margin-top: 2px
+//     margin-bottom: 2px
 
 /* Handle */
 ::-webkit-scrollbar-thumb
@@ -124,6 +133,12 @@
         //     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
         //     skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
         //     scaleY(var(--tw-scale-y));
+
+.ae-max-w
+    max-width: calc( 100vw - 32px )
+
+.ae-icon-grad
+    fill: radial-gradient($light-green, $dark-green)
 
 // @media screen and (max-width: 768px) {
 //     .ae-nav-menu {
@@ -325,5 +340,3 @@
     -o-transform: rotate(-180deg)
     transform: rotate(-180deg)
     opacity: 0
-
-
