@@ -13,41 +13,73 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
     damping: 10,
   };
 
-  const transitionColor = "deepskyblue";
+  const transitionColor = "black";
 
   return (
     <div>
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence
+        mode="wait"
+        initial={false}
+        onExitComplete={() => window.scrollTo(0, 0)}
+      >
         <motion.div key={router.route}>
-          {/* Top transition div */}
-          <motion.div
-            style={{
-              backgroundColor: transitionColor,
-              position: "fixed",
-              width: "100vw",
-              zIndex: 1000,
-              top: 0,
-            }}
-            transition={transitionSpringPhysics}
-            initial={{ height: "0vh" }} // Start hidden
-            animate={{ height: transitionDown ? "0vh" : "100vh" }} // Cover screen when transitionDown is false
-            exit={{ height: "0vh" }} // Exit to hidden
-          />
-
-          {/* Bottom transition div */}
-          <motion.div
-            style={{
-              backgroundColor: transitionColor,
-              position: "fixed",
-              width: "100vw",
-              zIndex: 1000,
-              bottom: 0,
-            }}
-            transition={transitionSpringPhysics}
-            initial={{ height: "100vh" }} // Start covering the screen
-            animate={{ height: transitionDown ? "100vh" : "0vh" }} // Retract when transitionDown is false
-            exit={{ height: "0vh" }} // Exit to hidden
-          />
+          {transitionDown ? (
+            <>
+              <motion.div
+                style={{
+                  backgroundColor: transitionColor,
+                  position: "fixed",
+                  height: "100vh",
+                  zIndex: 1000,
+                  right: 0,
+                }}
+                transition={transitionSpringPhysics}
+                initial={{ width: "0vw" }}
+                animate={{ width: "100vw" }}
+                exit={{ width: "0vw" }}
+              />
+              <motion.div
+                style={{
+                  backgroundColor: transitionColor,
+                  position: "fixed",
+                  height: "100vh",
+                  zIndex: 1000,
+                  left: 0,
+                }}
+                transition={transitionSpringPhysics}
+                initial={{ width: "100vw" }}
+                animate={{ width: "0vw", transition: { delay: 0.2 } }}
+              />
+            </>
+          ) : (
+            <>
+              <motion.div
+                style={{
+                  backgroundColor: transitionColor,
+                  position: "fixed",
+                  height: "100vh",
+                  zIndex: 1000,
+                  left: 0,
+                }}
+                transition={transitionSpringPhysics}
+                initial={{ width: "0vw" }}
+                animate={{ width: "100vw" }}
+                exit={{ width: "0vw" }}
+              />
+              <motion.div
+                style={{
+                  backgroundColor: transitionColor,
+                  position: "fixed",
+                  height: "100vh",
+                  zIndex: 1000,
+                  right: 0,
+                }}
+                transition={transitionSpringPhysics}
+                initial={{ width: "100vw" }}
+                animate={{ width: "0vw", transition: { delay: 0.2 } }}
+              />
+            </>
+          )}
 
           <Component {...pageProps} />
         </motion.div>

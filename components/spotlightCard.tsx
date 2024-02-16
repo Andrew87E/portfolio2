@@ -85,7 +85,7 @@ export const SpotlightCard = ({
             }}
           />
           <span className="mb-4 inline-flex items-center justify-center rounded-md bg-lime-500 p-2 shadow-lg">
-            <img
+            <Image
               src={img.src}
               // width={img.width ?? 300}
               // height={img.height ?? 100}
@@ -98,8 +98,11 @@ export const SpotlightCard = ({
           </h3>
           <p className="text-sm text-slate-400 mb-4">{body}</p>
           <section className="w-full text-gray-600">
-            {badges?.map((badge) => (
-              <span className="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-slate-400 rounded-full border border-slate-400 mb-6">
+            {badges?.map((badge, i) => (
+              <span
+                key={i}
+                className="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-slate-400 rounded-full border border-slate-400 mb-6"
+              >
                 {badge}
               </span>
             ))}

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Footer } from "../footer/footer";
 import { Github } from "./githubButton";
 import { MobileMenu } from "../navbar/mobileMenu";
@@ -25,30 +25,23 @@ export const Page = ({
   const [lastScrollY, setLastScrollY] = useState(0);
   const controls = useAnimation();
 
-  const handleScroll = () => {
+  /// handle scroll to hide navbar
+  const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
 
     if (currentScrollY > lastScrollY) {
       // Scrolling down
-      controls.start({ top: "-60px" }); // Adjust '-60px' to match the height of your navbar
+      controls.start({ top: "-60px" });
     } else {
       // Scrolling up
       controls.start({ top: "0px" });
     }
 
     setLastScrollY(currentScrollY);
-  };
+  }, [controls, lastScrollY]);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollY, controls]);
-
+  /// handle dark mode change
   const handleDarkChange = () => {
-    // TODO: fix local storage priority over os preference
     localStorage.setItem("color-theme", darkModeActual ? "light" : "dark");
     document.body.classList.toggle("dark");
     document.body.classList.toggle("bg-black");
@@ -64,17 +57,18 @@ export const Page = ({
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // we only want to run this on initial page load
       // check if user has set a preference for dark mode
       const localPref = localStorage.getItem("color-theme");
       console.log(window.matchMedia("(prefers-color-scheme: dark)"));
       console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
 
+      /// if no local preference, check os preference
       if (!localPref) {
         const userPrefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)"
         ).matches;
 
+        /// if os preference is dark, set dark mode
         if (userPrefersDark || localPref === "dark") {
           console.log("this hits");
           setDarkMode(true);
@@ -82,6 +76,7 @@ export const Page = ({
           document.body.classList.remove("bg-slate-200");
           document.body.classList.add("dark");
           document.body.classList.add("bg-black");
+          /// if os preference is light, set light mode
         } else {
           setDarkMode(false);
           localStorage.setItem("color-theme", "light");
@@ -89,12 +84,15 @@ export const Page = ({
           document.body.classList.remove("dark");
           document.body.classList.remove("bg-black");
         }
+        /// if local preference is set, use that
       } else {
+        /// if local preference is dark, set dark mode
         if (localPref === "dark") {
           setDarkMode(true);
           document.body.classList.remove("bg-slate-200");
           document.body.classList.add("dark");
           document.body.classList.add("bg-black");
+          /// if local preference is light, set light mode
         } else {
           setDarkMode(false);
           document.body.classList.add("bg-slate-200");
@@ -103,7 +101,16 @@ export const Page = ({
         }
       }
     }
-  }, []);
+
+    /// add event listener for scroll to hide navbar
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    /// cleanup
+    return () => {
+      /// remove event listener
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
 
   return (
     <div
