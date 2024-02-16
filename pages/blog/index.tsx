@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { Page } from "@/components";
 
-export default function About() {
+export default function Blog() {
   return (
     <Page
-      currentPage="About Me"
+      currentPage="Blog"
       meta={{
         title: "Contact Me - Andrew Edwards | Get in Touch Today",
         desc: "Contact Andrew Edwards for inquiries, collaborations, or questions. Reach out to discuss software development, projects, or any other queries. Let's connect!",

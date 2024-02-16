@@ -87,8 +87,8 @@ export const SpotlightCard = ({
           <span className="mb-4 inline-flex items-center justify-center rounded-md bg-lime-500 p-2 shadow-lg">
             <Image
               src={img.src}
-              // width={img.width ?? 300}
-              // height={img.height ?? 100}
+              width={img.width ?? 300}
+              height={img.height ?? 100}
               alt={img.alt}
               className="w-16 h-16"
             />

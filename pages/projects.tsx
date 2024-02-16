@@ -18,7 +18,7 @@ export default function Projects() {
       }}
     >
       <section className="w-full">
-        <div className="mt-96"></div>
+        {/* <div className="mt-96"></div> */}
         <div className="h-96 p-6">
           {/* <SpotlightCard
             key={1}

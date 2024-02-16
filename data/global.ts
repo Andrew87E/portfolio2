@@ -24,13 +24,13 @@ export const routes: Route[] = [
         title: "Projects",
         path: "/projects",
     },
+    {
+        title: "Blog",
+        path: "/blog",
+    },
     // {
-    //     title: "Blog",
-    //     path: "/blog",
-    // },
-    // {
-    //   title: "Games",
-    //   path: "/games",
+    //     title: "Games",
+    //     path: "/games",
     // },
     {
         title: "Skills",
