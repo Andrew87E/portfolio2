@@ -41,23 +41,13 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
         onExitComplete={() => window.scrollTo(0, 0)}
       >
         <motion.div key={router.route}>
-          {/* <motion.div
-            style={{
-              backgroundColor: "transparent",
-              position: "fixed",
-              height: "100vh",
-              zIndex: -100,
-              right: transitionLeft ? 0 : "auto",
-              left: transitionLeft ? "auto" : 0,
-            }}
-            transition={transitionSpringPhysics}
-            animate={{ width: "0vw" }}
-            exit={{ width: "100vw", transition: { duration: 0.2 } }}
-          /> */}
-
           <motion.div
+            key={router.route + "bg"}
             style={{
-              backgroundColor: transitionColor,
+              // backgroundColor: transitionColor,
+              backgroundImage: "url('/images/bg-grad.jpeg')",
+              backgroundSize: "cover",
+              opacity: 1,
               position: "fixed",
               height: "100vh",
               zIndex: 1000,
@@ -66,9 +56,48 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
             }}
             transition={transitionSpringPhysics}
             initial={{ width: "100vw" }}
-            animate={{ width: "0vw", transition: { delay: 0.2 } }}
-            exit={{ width: "100vw" }}
+            animate={{
+              width: "0vw",
+              transition: { delay: 0.2, ease: "easeInOut", duration: 0.5 },
+            }}
+            exit={{
+              width: "100vw",
+              transition: { delay: 0.2, ease: "easeInOut", duration: 0.5 },
+            }}
+            // className="blur-xl"
           />
+
+          {/* {transitionLeft ? (
+            <motion.div
+              key={router.route + "left"}
+              style={{
+                backgroundColor: "black",
+                position: "fixed",
+                height: "100vh",
+                zIndex: 1000,
+                left: 0,
+              }}
+              transition={transitionSpringPhysics}
+              initial={{ width: "100vw" }}
+              animate={{ width: "0vw" }}
+              exit={{ width: "100vw" }}
+            />
+          ) : (
+            <motion.div
+              key={router.route + "right"}
+              style={{
+                backgroundColor: "black",
+                position: "fixed",
+                height: "100vh",
+                zIndex: 1000,
+                right: 0,
+              }}
+              transition={transitionSpringPhysics}
+              initial={{ width: "100vw" }}
+              animate={{ width: "0vw" }}
+              exit={{ width: "100vw" }}
+            />
+          )} */}
 
           <Component {...pageProps} />
         </motion.div>
