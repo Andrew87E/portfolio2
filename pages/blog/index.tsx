@@ -10,8 +10,8 @@ export default function Blog() {
         desc: "Contact Andrew Edwards for inquiries, collaborations, or questions. Reach out to discuss software development, projects, or any other queries. Let's connect!",
       }}
     >
-      <article>
-        <p className="text-wrap text-2xl dark:text-white mb-8 font-extra mt-36">
+      <article className="">
+        <p className="text-wrap text-2xl dark:text-white mb-8 font-extra">
           Currently, I&apos;m working at{" "}
           <Link
             className="text-blue-500 hover:scale-125"

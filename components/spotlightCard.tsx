@@ -81,7 +81,7 @@ export const SpotlightCard = ({
             className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
             style={{
               opacity,
-              background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,.06), transparent 40%)`,
+              background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.25), transparent 40%)`,
             }}
           />
           <span className="mb-4 inline-flex items-center justify-center rounded-md bg-lime-500 p-2 shadow-lg">

@@ -8,7 +8,6 @@ import { routes } from "@/data/global";
 const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
   const [transitionLeft, setTransitionLeft] = useState(true);
   const [prevPageIndex, setPrevPageIndex] = useState(0);
-  const [pageIndex, setPageIndex] = useState(0);
 
   const transitionSpringPhysics: Spring = {
     type: "spring",
@@ -32,7 +31,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
     }
     setPrevPageIndex(routeIndex);
     console.log(`prevPageIndex:: ${prevPageIndex}`);
-  }, [router.route]);
+  }, [router.route, prevPageIndex]);
 
   return (
     <div>
@@ -42,19 +41,19 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
         onExitComplete={() => window.scrollTo(0, 0)}
       >
         <motion.div key={router.route}>
-          <motion.div
+          {/* <motion.div
             style={{
-              backgroundColor: transitionColor,
+              backgroundColor: "transparent",
               position: "fixed",
               height: "100vh",
-              zIndex: 1000,
+              zIndex: -100,
               right: transitionLeft ? 0 : "auto",
               left: transitionLeft ? "auto" : 0,
             }}
             transition={transitionSpringPhysics}
             animate={{ width: "0vw" }}
-            exit={{ width: "100vw" }}
-          />
+            exit={{ width: "100vw", transition: { duration: 0.2 } }}
+          /> */}
 
           <motion.div
             style={{

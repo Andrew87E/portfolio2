@@ -11,7 +11,7 @@ export default function About() {
       }}
     >
       <article>
-        <p className="text-wrap text-2xl dark:text-white mb-8 font-extra mt-36">
+        <p className="text-wrap text-2xl dark:text-white mb-8 font-extra">
           Currently, I&apos;m working at{" "}
           <Link
             className="text-blue-500 hover:scale-125"
