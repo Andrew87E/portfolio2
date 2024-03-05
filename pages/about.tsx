@@ -10,34 +10,21 @@ export default function About() {
         desc: "Contact Andrew Edwards for inquiries, collaborations, or questions. Reach out to discuss software development, projects, or any other queries. Let's connect!",
       }}
     >
-      <article>
-        <p className="text-wrap text-2xl dark:text-white mb-8 font-extra">
-          Currently, I&apos;m working at{" "}
-          <Link
-            className="text-blue-500 hover:scale-125"
-            href="https://www.tifco.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            tifco industries{" "}
-          </Link>
-          where I focus on building awesome applications for our warehouse
-          operations.
-        </p>
-      </article>
-      <article>
-        <p className="text-wrap text-2xl dark:text-white mb-8 mt-2 font-extra">
-          Check out my latest{" "}
-          <Link href="/projects" className="text-blue-500">
-            projects
-          </Link>{" "}
-          or send me an{" "}
-          <a className="text-blue-500" href="mailto:andrew@edwards.codes">
-            email
-          </a>{" "}
-          if you&apos;d like to work together.
-        </p>
-      </article>
+      <section className="w-full">
+        <div className="h-96 p-6">
+          <div className="flex justify-center mt-10">
+            <div className="w-1/2">
+              <h1 className="text-4xl font-bold text-center text-gray-800">
+                About Me
+              </h1>
+              <p className="text-center text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                vel ex id elit aliquet lacinia. Sed id ipsum et purus malesuada.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </Page>
   );
 }
