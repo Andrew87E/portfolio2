@@ -3,17 +3,43 @@ import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 
 export const Github = () => {
+  const [isActivated, setIsActivated] = React.useState(true);
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  const handleHover = () => {
+    console.log("hovered");
+    setIsHovered(!isHovered);
+  };
+
+  const handleHoverLeave = () => {
+    console.log("hover left");
+  };
+
   return (
-    <div className="fixed -right-10 bottom-2 sm:right-0  md:bottom-2  w-36 md:w-64 md:right-2 text-center sm:text-right sm:-mt-12 z-50">
-      <a
-        className="w-auto inline-flex items-center sm:w-auto font-bold flex-shrink hover:scale-90 border-green-800 dark:border-lime-500 text-xs text-black dark:text-white border px-4 py-2 rounded-3xl cursor-pointer"
-        target="_blank"
-        rel="nooreferrer noreferrer"
-        href="https://github.com/Andrew87E/portfolio2"
-      >
-        <FaGithub width={16} height={16} className="shadow-xl" />
-        <span className="ml-2 hidden md:block">View Source Code </span>
-      </a>
-    </div>
+    isActivated && (
+      <div className="fixed z-50 -right-44 bottom-32 mb-4 rotate-90">
+        <section className="inline-flex items-center w-full flex-shrink -space-x-16">
+          <a
+            className="font-bold  text-xs text-black dark:text-white px-4 py-2 cursor-pointer inline-flex items-center w-full flex-shrink transition-all transform duration-1000 hover:scale-105"
+            target="_blank"
+            rel="nooreferrer noreferrer"
+            href="https://github.com/Andrew87E/portfolio2"
+          >
+            <FaGithub className="mr-4 -rotate-90" size={25} />
+
+            {"View Source Code".split(" ").map((letter, index) => (
+              <span
+                key={index}
+                className="transition-all transform duration-1000 md:text-md text-sm"
+              >
+                {letter} 
+              </span>
+            ))}
+          </a>
+
+          <span className="h-[2px] bg-black dark:bg-white w-64 transition-all transform duration-1000"></span>
+        </section>
+      </div>
+    )
   );
 };

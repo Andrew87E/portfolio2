@@ -9,6 +9,7 @@ export const Footer: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    console.log("Footer mounted");
     setIsMounted(true);
   }, []);
 
@@ -16,7 +17,7 @@ export const Footer: React.FC = () => {
   const year = date.getFullYear();
 
   return (
-    <footer className="text-center border-t border-t-gray-600 text-white dark:text-black  left-0 bottom-0 right-0 relative">
+    <footer className="text-center text-white dark:text-black  left-0 bottom-0 right-0 relative">
       <div className="justify-center px-6 pt-6">
         <div className="flex justify-center mb-1">
           {isMounted && (
