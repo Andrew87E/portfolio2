@@ -17,10 +17,12 @@
     "test": "jest "
   },
   "dependencies": {
+    "@react-three/drei": "^9.101.0",
     "@react-three/fiber": "^8.15.19",
     "@types/node": "20.10.4",
     "@types/react": "18.2.45",
     "@types/react-dom": "18.2.17",
+    "babel-plugin-glsl": "^1.0.0",
     "eslint": "8.55.0",
     "eslint-config-next": "14.0.4",
     "framer-motion": "^10.16.16",

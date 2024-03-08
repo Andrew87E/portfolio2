@@ -3,6 +3,7 @@ import {
   Jumbotron,
   SpotlightCard,
   AnimatedBackground,
+  DiamondView,
 } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +25,8 @@ export default function Home() {
         desc: "Welcome to the portfolio of Andrew Edwards, a software engineer specializing in creating innovative solutions. Explore projects, skills, and insights into the world of software development.",
       }}
     >
-      <AnimatedBackground />
+      {/* <AnimatedBackground /> */}
+      <DiamondView />
       <section className="w-full">
         {/* <Jumbotron /> */}
         <section className="flex flex-col text-6xl">
