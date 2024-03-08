@@ -1,4 +1,4 @@
-import { Page, Jumbotron, SpotlightCard } from "@/components";
+import { Page, Jumbotron, SpotlightCard, ContactForm } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -17,21 +17,15 @@ export default function Contact() {
         desc: "Welcome to the portfolio of Andrew Edwards, a software engineer specializing in creating innovative solutions. Explore Contact, skills, and insights into the world of software development.",
       }}
     >
-      <section className="w-full">
-        {/* <div className="mt-96"></div> */}
-        <div className="h-96 p-6">
-          <SpotlightCard
-            title="Testing"
-            body="Occaecat labore magna deserunt eiusmod veniam reprehenderit cillum proident ut incididunt consequat culpa."
-            link="/prof"
-            img={{
-              src: "/images/andrew.jpg",
-              alt: "Andrew Edwards",
-            }}
-            badges={["Flutter", "Dart", "Firebase"]}
-          />
-        </div>
-        <div className="mt-96"></div>
+      <section className="w-full flex justify-center content-center h-[75vh] border border-lime-500">
+        <AnimatedComponent
+          animationname="fadeIn"
+          duration="1s"
+          delay="0s"
+          
+        >
+          <ContactForm />
+        </AnimatedComponent>
       </section>
     </Page>
   );
