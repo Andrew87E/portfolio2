@@ -61,7 +61,9 @@ export const Page = ({
       const localPref = localStorage.getItem("color-theme");
       console.log(window.matchMedia("(prefers-color-scheme: dark)"));
       console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
-
+      document.body.classList.add("transition-colors");
+      document.body.classList.add("duration-500");
+      document.body.classList.add("ease-in-out");
       /// if no local preference, check os preference
       if (!localPref) {
         const userPrefersDark = window.matchMedia(
@@ -114,9 +116,7 @@ export const Page = ({
 
   return (
     <div
-      className={`transition-colors duration-500 ease-in-out ${
-        !darkModeActual ? `bg-slate-200` : `ae-dark-radial-grey`
-      } }`}
+      className={`transition-colors duration-500 ease-in-out `}
       onClick={handleClickForMobile}
     >
       <Head>
