@@ -31,8 +31,13 @@ module.exports = {
         "slide-out": "slide-out 0.7s ease-in-out",
         "slide-up": "slide-up 0.7s ease-in-out",
         "slide-down": "slide-down 0.7s ease-in-out",
+        "spin-slow": "spin 3s linear infinite",
       },
       keyframes: {
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
         "slide-in": {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(0)" },

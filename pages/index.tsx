@@ -4,18 +4,11 @@ import {
   SpotlightCard,
   AnimatedBackground,
   DiamondView,
+  ElevatedCircleImage,
 } from "@/components";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
 import { AnimatedComponent } from "react-style-text";
 
-// import { Inter } from "next/font/google";
-// const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
-  // const [initialAnimationFinished, setInitialAnimationFinished] = useState(false);
-
   return (
     <Page
       currentPage="Home"
@@ -24,63 +17,77 @@ export default function Home() {
           "Andrew Edwards - Software Engineer | Building Innovative Solutions",
         desc: "Welcome to the portfolio of Andrew Edwards, a software engineer specializing in creating innovative solutions. Explore projects, skills, and insights into the world of software development.",
       }}
+      className=""
     >
-      {/* <AnimatedBackground /> */}
-      <DiamondView />
-      <section className="w-full">
-        {/* <Jumbotron /> */}
-        <section className="flex flex-col text-6xl">
-          <AnimatedComponent
-            animationname="slideInFromLeft"
-            duration="1s"
-            timing="ease-in-out"
-            iteration={1}
-          >
-            <h1 className="mt-28 text-black dark:text-white font-header ml-4 cursor-default flex">
-              Hi, I'm Andrew.
-            </h1>
-          </AnimatedComponent>
-          <AnimatedComponent
-            animationname="flipFromLeftToCenter"
-            duration="1s"
-            timing="ease-in-out"
-            iteration={1}
-          >
-            <h2 className="text-4xl dark:text-white font-header ml-4 cursor-default">
-              Software Engineer
-            </h2>
-          </AnimatedComponent>
-          <AnimatedComponent
-            animationname="slideInFromBottom"
-            duration="1s"
-            timing="ease-in-out"
-            iteration={1}
-          >
-            <p className="text-2xl dark:text-white font-body ml-4 cursor-default">
-              Building Innovative Solutions
-            </p>
-          </AnimatedComponent>
-        </section>
-        <section className="flex flex-col mt-20">
-          <h2 className="text-4xl dark:text-white font-header ml-4">Skills</h2>
-          <article className="flex flex-row max-w-[50vw] mt-10 mb-40">
-            <p className="text-wrap text-2xl dark:text-white mb-8 mt-2 font-body ml-4">
-              I&apos;m a software engineer with a passion for building a wide
-              range of applications. From native mobile to Flutter, web, and
-              backend servers, I&apos;ve got you covered.
-            </p>
-          </article>
-        </section>
+      <section className="relative flex flex-col md:flex-row h-screen items-center">
+        <section className="w-full md:w-1/4 bg-lime-500 flex flex-col justify-center items-center p-4 min-h-[20vh] md:min-h-screen"></section>
 
-        {/*
-           <article className="flex flex-row max-w-[50vw] mt-10 mb-40">
-            <p className="text-wrap text-2xl dark:text-white mb-8 mt-2 font-body ml-4">
-              I&apos;m a software engineer with a passion for building a wide
-              range of applications. From native mobile to Flutter, web, and
-              backend servers, I&apos;ve got you covered.
-            </p>
-          </article> 
-          */}
+        {/* Manually adjust positioning for each breakpoint */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 translate-y-1/2
+                  sm:top-0 sm:left-1/2 sm:-translate-x-1/2 sm:translate-y-1/2
+                  md:top-1/2 md:left-20 md:translate-x-10 md:-translate-y-1/2
+                  lg:top-1/2 lg:left-10 lg:translate-x-10 lg:-translate-y-1/2
+                  xl:top-1/2 xl:left-32 xl:translate-x-10 xl:-translate-y-1/2
+                  2xl:top-1/2 2xl:left-40 2xl:translate-x-20 2xl:-translate-y-1/2"
+        >
+          <figure className="w-48 md:w-64 lg:w-96 h-48 md:h-64 lg:h-96">
+            {" "}
+            {/* Adjust based on actual size needed */}
+            <ElevatedCircleImage
+              src="https://avatars.githubusercontent.com/u/106359255?v=4"
+              alt="Photo of Andrew Edwards"
+              fill
+            />
+          </figure>
+        </div>
+
+        <section className="w-full md:w-4/6 bg-none flex flex-col justify-center items-center p-4 min-h-[50vh] md:min-h-0 mt-48">
+          <section className="text-white ">
+            <AnimatedComponent
+              animationname="fadeInFromTop"
+              iteration={1}
+              duration="1s"
+              delay="0s"
+              timing="ease-in-out"
+            >
+              <h1 className="font-header text-6xl mb-4">Andrew Edwards</h1>
+            </AnimatedComponent>
+            <AnimatedComponent
+              animationname="fadeIn"
+              iteration={1}
+              duration="2s"
+              delay="0s"
+              timing="ease-in-out"
+            >
+              <p className="text-4xl font-extra mb-4">Software Engineer</p>
+            </AnimatedComponent>
+            <AnimatedComponent
+              animationname="fadeInFromBottom"
+              iteration={1}
+              duration="1s"
+              delay="0s"
+              timing="ease-in-out"
+            >
+              <p className="text-2xl font-subheader mb-6">
+                Building Innovative Solutions
+              </p>
+            </AnimatedComponent>
+            <AnimatedComponent
+              animationname="fadeInFromBottom"
+              iteration={1}
+              duration="1s"
+              delay="0s"
+              timing="ease-in-out"
+            >
+              <button
+                className={`text-black hover:text-black dark:text-white dark:hover:text-white rounded-2xl font-subheader text-sm lg:text-md 2xl:text-xl border border-lime-500 bg-transparent shadow-sm group px-4 py-1 -mt-2 hover:scale-105`}
+              >
+                Contact Me
+              </button>
+            </AnimatedComponent>
+          </section>
+        </section>
       </section>
     </Page>
   );
