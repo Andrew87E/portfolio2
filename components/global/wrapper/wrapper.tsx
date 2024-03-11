@@ -13,12 +13,14 @@ type PageProps = {
     desc?: string;
   };
   children?: JSX.Element | React.ReactNode;
+  className?: string;
 };
 
 export const Page = ({
   currentPage,
   meta: { title, desc },
   children,
+  className,
 }: PageProps) => {
   const [darkModeActual, setDarkMode] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -126,7 +128,7 @@ export const Page = ({
 
   return (
     <div
-      className={`transition-colors duration-500 ease-in-out `}
+      className={`transition-colors duration-500 ease-in-out ${className} `}
       onClick={handleClickForMobile}
     >
       <Head>
