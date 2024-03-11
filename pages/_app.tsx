@@ -20,17 +20,17 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
 
   useEffect(() => {
     const routeIndex = routes.findIndex((route) => route.path === router.route);
-    console.log(`routeIndex:: ${routeIndex}`);
+    // console.log(`routeIndex:: ${routeIndex}`);
     if (routeIndex === prevPageIndex || routeIndex === -1) return;
     if (routeIndex > prevPageIndex) {
       setTransitionLeft(true);
-      console.log("left");
+      // console.log("left");
     } else {
       setTransitionLeft(false);
-      console.log("right");
+      // console.log("right");
     }
     setPrevPageIndex(routeIndex);
-    console.log(`prevPageIndex:: ${prevPageIndex}`);
+    // console.log(`prevPageIndex:: ${prevPageIndex}`);
   }, [router.route, prevPageIndex]);
 
   return (

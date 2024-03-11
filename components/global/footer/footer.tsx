@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    console.log("Footer mounted");
+    // console.log("Footer mounted");
     setIsMounted(true);
   }, []);
 

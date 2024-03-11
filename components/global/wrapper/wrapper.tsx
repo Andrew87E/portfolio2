@@ -59,8 +59,8 @@ export const Page = ({
     if (typeof window !== "undefined") {
       // check if user has set a preference for dark mode
       const localPref = localStorage.getItem("color-theme");
-      console.log(window.matchMedia("(prefers-color-scheme: dark)"));
-      console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
+      // console.log(window.matchMedia("(prefers-color-scheme: dark)"));
+      // console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
       document.body.classList.add("transition-colors");
       document.body.classList.add("duration-500");
       document.body.classList.add("ease-in-out");
@@ -72,7 +72,7 @@ export const Page = ({
 
         /// if os preference is dark, set dark mode
         if (userPrefersDark || localPref === "dark") {
-          console.log("this hits");
+          // console.log("this hits");
           setDarkMode(true);
           localStorage.setItem("color-theme", "dark");
           document.body.classList.remove("bg-slate-200");
@@ -113,6 +113,16 @@ export const Page = ({
       window.removeEventListener("scroll", handleScroll);
     };
   }, [handleScroll]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log("%cAndrew Edwards", `color:green; font-size:50px`);
+      console.log(
+        "%chttps://github.com/Andrew87E/portfolio2 ",
+        `color:blue; font-size:20px`
+      );
+    }
+  }, []);
 
   return (
     <div

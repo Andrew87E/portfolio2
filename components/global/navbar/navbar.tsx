@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { routes } from "../../../data/global";
 import { Name } from "./name";
-import { FiSun, FiMoon } from "react-icons/fi";
-import { Tooltip } from "react-tooltip";
-import { firaCode, glory } from "../fonts/fonts";
+import { glory } from "../fonts/fonts";
+import { useEffect, useState } from "react";
 
 interface NavbarProps {
   currentPage: any; // TODO: Replace 'any' with the type of currentPage
@@ -16,21 +15,76 @@ export const Navbar = ({
   darkModeHandle,
   darkModeValue,
 }: NavbarProps) => {
+  const [currentMoon, setCurrentMoon] = useState<number>(0);
+  const [moonPhase, setMoonPhase] = useState<string>("");
+
+  const moons = ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘", "🌑"];
+
+  const pullPhaseFromApi = async () => {
+    try {
+      const timeStamp = Math.floor(Date.now() / 1000);
+
+      const res = await fetch(
+        `https://api.farmsense.net/v2/moonphases/?d=${timeStamp}`
+      );
+      const data = await res.json();
+      // console.log(data);
+      const phase = data[0].Phase;
+      // console.log(phase);
+      setMoonPhase(phase);
+
+      switch (phase) {
+        case "Waxing Crescent":
+        case "First Quarter":
+          setCurrentMoon(1);
+          break;
+        case "Waxing Gibbous":
+          setCurrentMoon(2);
+          break;
+        case "Full Moon":
+          setCurrentMoon(8);
+          break;
+        case "Waning Gibbous":
+          setCurrentMoon(5);
+          break;
+        case "Last Quarter":
+          setCurrentMoon(6);
+          break;
+        case "Waning Crescent":
+          setCurrentMoon(7);
+          break;
+        default:
+          setCurrentMoon(8);
+          break;
+      }
+    } catch (error) {
+      console.log(error);
+      setCurrentMoon(0);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      pullPhaseFromApi();
+    }
+  }, []);
+
   return (
     <>
       {currentPage == "Home" ? <section /> : <Name />}
       <ul className="inline-flex mr-4 flex-wrap mt-4 text-md lg:text-lg 2xl:text-2xl">
         <li className={`transition-all duration-700 mr-4`}>
           <button
-            className={`rounded-full hover:animate-pulse hover:scale-105 focus:outline-none focus:ring-0 transition ease-in-out`}
+            className={`rounded-full hover:animate-spin-slow focus:outline-none focus:ring-0 transition ease-in-out`}
             onClick={darkModeHandle}
             data-tooltip-id="dark-mode"
-            data-tooltip-content="Toggle dark mode"
+            data-tooltip-content={`${darkModeValue ? `` : `Current Phase: ${moonPhase}`}`} // TODO: Add tooltip for dark mode
           >
             {darkModeValue ? (
-              <FiSun className="text-yellow-500" size={30} />
+              // ☀️ doesnt show correctly in vscode
+              <span className="text-yellow-500">☀️</span>
             ) : (
-              <FiMoon className="fill-slate-400" size={30} />
+              <span className="text-slate-400">{moons[currentMoon]}</span>
             )}
           </button>
           {/* <Tooltip id="dark-mode" place="bottom" /> */}
