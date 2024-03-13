@@ -6,7 +6,7 @@ import {
   DiamondView,
   ElevatedCircleImage,
 } from "@/components";
-import { AnimatedComponent } from "react-style-text";
+import { AnimatedComponent, Typewriter } from "react-style-text";
 
 export default function Home() {
   return (
@@ -17,19 +17,17 @@ export default function Home() {
           "Andrew Edwards - Software Engineer | Building Innovative Solutions",
         desc: "Welcome to the portfolio of Andrew Edwards, a software engineer specializing in creating innovative solutions. Explore projects, skills, and insights into the world of software development.",
       }}
-      className=""
+      className="min-h-screen"
     >
-      <section className="relative flex flex-col md:flex-row h-screen items-center">
-        <section className="w-full md:w-1/4 bg-lime-500 flex flex-col justify-center items-center p-4 min-h-[20vh] md:min-h-screen"></section>
-
-        {/* Manually adjust positioning for each breakpoint */}
+      <section className="relative flex flex-col md:flex-row items-center h-[85vh]">
+        <section className="w-full md:w-1/4 bg-lime-500 flex flex-col justify-center items-center h-1/4 md:h-[85vh]" />
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 translate-y-1/2
                   sm:top-0 sm:left-1/2 sm:-translate-x-1/2 sm:translate-y-1/2
                   md:top-1/2 md:left-20 md:translate-x-10 md:-translate-y-1/2
                   lg:top-1/2 lg:left-10 lg:translate-x-10 lg:-translate-y-1/2
                   xl:top-1/2 xl:left-32 xl:translate-x-10 xl:-translate-y-1/2
-                  2xl:top-1/2 2xl:left-40 2xl:translate-x-20 2xl:-translate-y-1/2"
+                  2xl:top-1/2 2xl:left-1/4 2xl:-translate-x-40 2xl:-translate-y-1/2"
         >
           <figure className="w-48 md:w-64 lg:w-96 h-48 md:h-64 lg:h-96">
             {" "}
@@ -41,17 +39,20 @@ export default function Home() {
             />
           </figure>
         </div>
+        <AnimatedBackground />
 
-        <section className="w-full md:w-4/6 bg-none flex flex-col justify-center items-center p-4 min-h-[50vh] md:min-h-0 mt-48">
-          <section className="text-white ">
+        <section className="w-full md:w-3/4 bg-none md:flex md:flex-col md:justify-end md:items-end p-4 min-h-[50vh] pr-24">
+          <section className="text-white mt-48">
             <AnimatedComponent
               animationname="fadeInFromTop"
               iteration={1}
               duration="1s"
-              delay="0s"
+              delay="0s" 
               timing="ease-in-out"
             >
-              <h1 className="font-header text-6xl mb-4">Andrew Edwards</h1>
+              <h1 className="font-header mb-4 text-xl sm:text-2xl">
+                Andrew Edwards
+              </h1>
             </AnimatedComponent>
             <AnimatedComponent
               animationname="fadeIn"
@@ -60,7 +61,7 @@ export default function Home() {
               delay="0s"
               timing="ease-in-out"
             >
-              <p className="text-4xl font-extra mb-4">Software Engineer</p>
+              <h2 className="font-extra mb-4 text-md">Software Engineer</h2>
             </AnimatedComponent>
             <AnimatedComponent
               animationname="fadeInFromBottom"
@@ -69,9 +70,17 @@ export default function Home() {
               delay="0s"
               timing="ease-in-out"
             >
-              <p className="text-2xl font-subheader mb-6">
-                Building Innovative Solutions
-              </p>
+              <h3 className="font-lobster text-sm">
+                <Typewriter
+                  datatext={[
+                    "Building Solutions",
+                    "Creating Solutions",
+                    "Developing Solutions",
+                  ]}
+                  cursorcolor="lime"
+                  typingspeed={100}
+                />
+              </h3>
             </AnimatedComponent>
             <AnimatedComponent
               animationname="fadeInFromBottom"
@@ -81,7 +90,7 @@ export default function Home() {
               timing="ease-in-out"
             >
               <button
-                className={`text-black hover:text-black dark:text-white dark:hover:text-white rounded-2xl font-subheader text-sm lg:text-md 2xl:text-xl border border-lime-500 bg-transparent shadow-sm group px-4 py-1 -mt-2 hover:scale-105`}
+                className={`text-black hover:text-black dark:text-white dark:hover:text-white rounded-2xl font-subheader text-sm lg:text-md 2xl:text-xl border border-lime-500 bg-transparent shadow-sm group px-4 py-1 hover:scale-105 mt-6`}
               >
                 Contact Me
               </button>
