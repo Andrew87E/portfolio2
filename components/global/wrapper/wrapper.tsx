@@ -146,7 +146,7 @@ export const Page = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen">
+      <main className="">
         <nav
           className={`fixed top-0 right-0 left-0 h-16 inline-flex  items-center justify-between z-30`}
           id="navBar"
@@ -173,6 +173,7 @@ export const Page = ({
       </main>
       <Github />
       <Footer />
+      {/* {currentPage !== "Home" && <Footer />} */}
     </div>
   );
 };
