@@ -6,3 +6,4 @@ export { AnimatedBackground } from './global/backgrounds/spinningMesh';
 export { DiamondView } from './global/backgrounds/diamond';
 export { ContactForm } from './contactForm';
 export { ElevatedCircleImage } from './elevatedCircleImg';
+export { Carousel } from './carousel';

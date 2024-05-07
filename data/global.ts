@@ -21,13 +21,14 @@ export const routes: Route[] = [
         path: "/",
     },
     {
+        title: "Experience",
+        path: "/experience",
+    },
+    {
         title: "Projects",
         path: "/projects",
     },
-    {
-        title: "Blog",
-        path: "/blog",
-    },
+    
     // {
     //     title: "Games",
     //     path: "/games",

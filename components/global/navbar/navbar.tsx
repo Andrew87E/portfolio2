@@ -5,7 +5,7 @@ import { glory } from "../fonts/fonts";
 import { useEffect, useState } from "react";
 
 interface NavbarProps {
-  currentPage: any; // TODO: Replace 'any' with the type of currentPage
+  currentPage: any;
   darkModeHandle: any;
   darkModeValue: boolean;
 }
@@ -17,20 +17,21 @@ export const Navbar = ({
 }: NavbarProps) => {
   const [currentMoon, setCurrentMoon] = useState<number>(0);
   const [moonPhase, setMoonPhase] = useState<string>("");
+  const [lastPull, setLastPull] = useState<number>(0);
 
   const moons = ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘", "🌑"];
 
   const pullPhaseFromApi = async () => {
     try {
       const timeStamp = Math.floor(Date.now() / 1000);
-
+      setLastPull(timeStamp);
       const res = await fetch(
         `https://api.farmsense.net/v2/moonphases/?d=${timeStamp}`
       );
       const data = await res.json();
       // console.log(data);
       const phase = data[0].Phase;
-      // console.log(phase);
+      console.log(phase);
       setMoonPhase(phase);
 
       switch (phase) {
@@ -64,7 +65,11 @@ export const Navbar = ({
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (
+      typeof window !== "undefined" &&
+      currentPage === "Home" &&
+      lastPull + 86400 < Math.floor(Date.now() / 1000)
+    ) {
       pullPhaseFromApi();
     }
   }, []);
