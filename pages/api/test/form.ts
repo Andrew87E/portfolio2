@@ -1,0 +1,24 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+import { MongoClient, ServerApiVersion } from 'mongodb';
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+    const { email, fName, lName, question } = req.body;
+    const client = new MongoClient(process.env.MONGO_URI!, {
+        serverApi: {
+            version: ServerApiVersion.v1,
+            strict: true,
+            deprecationErrors: true,
+        }
+    });
+    await client.connect();
+
+    const db = client.db('test');
+
+    const response = await db.collection('feTest').insertOne({
+        email,
+        fName,
+        lName,
+        question,
+    });
+    res.status(200).json(response);
+};
