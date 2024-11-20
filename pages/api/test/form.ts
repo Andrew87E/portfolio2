@@ -59,7 +59,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
         res.status(200).json({
             success: true,
-            id: response.insertedId,
+            message: 'Test API endpoint works!',
         });
     } catch (error) {
         console.error('Database error:', error);
