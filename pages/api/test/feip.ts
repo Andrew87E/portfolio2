@@ -1,4 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiResponse } from 'next'
+import { NextRequest } from 'next/server';
 
 type Data = {
     name: string,
@@ -6,13 +7,11 @@ type Data = {
 }
 
 export default function handler(
-    req: NextApiRequest,
+    req: NextRequest,
     res: NextApiResponse<Data>
 ) {
-    // we want to capture the ip address of the request
-    const ipAdd = req.socket.remoteAddress || null;
+    const ipAdd = req.ip;
     console.log(ipAdd);
-    console.log(req.socket);
 
     if (!ipAdd) {
         console.error('No IP address found in request');
