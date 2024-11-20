@@ -57,6 +57,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             initialData,
         });
 
+        console.log('Inserted new record:', response.insertedId);
+
         res.status(200).json({
             success: true,
             message: 'Test API endpoint works!',
