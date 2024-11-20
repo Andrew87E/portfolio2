@@ -19,7 +19,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(400).json({ message: 'Bad Request' });
     }
 
-    const { email, fName, lName, question } = req.body;
+    const { email, fName, lName, question, initialData } = req.body;
     const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
     const client = new MongoClient(process.env.MONGO_URI!, {
@@ -54,6 +54,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             lName,
             question,
             ipAddress,
+            initialData,
         });
 
         res.status(200).json({
