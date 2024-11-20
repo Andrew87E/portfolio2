@@ -12,6 +12,7 @@ export default function handler(
     // we want to capture the ip address of the request
     const ipAdd = req.socket.remoteAddress || null;
     console.log(ipAdd);
+    console.log(req.socket);
 
     if (!ipAdd) {
         console.error('No IP address found in request');
