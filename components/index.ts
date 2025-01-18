@@ -8,3 +8,5 @@ export { ContactForm } from './contactForm';
 export { ElevatedCircleImage } from './elevatedCircleImg';
 export { Carousel } from './carousel';
 export { Timeline } from './timeline';
+export { SkillTagCloud } from './skillCloud';
+export { StaticSkills } from './skills/skills';
