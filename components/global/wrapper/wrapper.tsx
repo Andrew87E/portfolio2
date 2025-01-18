@@ -146,7 +146,9 @@ export const Page = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="">
+      <main
+        className={`${darkModeActual ? "ae-grad-dark-bg" : "ae-grad-light-bg"}`}
+      >
         <nav
           className={`fixed top-0 right-0 left-0 h-16 inline-flex  items-center justify-between z-30`}
           id="navBar"
@@ -170,9 +172,9 @@ export const Page = ({
         </nav>
 
         {children}
+        <Github />
+        <Footer />
       </main>
-      <Github />
-      <Footer />
       {/* {currentPage !== "Home" && <Footer />} */}
     </div>
   );

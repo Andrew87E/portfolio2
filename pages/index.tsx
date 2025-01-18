@@ -6,9 +6,19 @@ import {
   DiamondView,
   ElevatedCircleImage,
 } from "@/components";
+import { useEffect, useState } from "react";
 import { AnimatedComponent, Typewriter } from "react-style-text";
 
 export default function Home() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setDarkMode(document.body.classList.contains("dark"));
+      console.log(darkMode);
+    }
+  }, []);
+
   return (
     <Page
       currentPage="Home"
@@ -19,8 +29,8 @@ export default function Home() {
       }}
       className="min-h-screen"
     >
-      <section className="relative flex flex-col md:flex-row items-center h-[85vh]">
-        <section className="w-full md:w-1/4 bg-lime-500 flex flex-col justify-center items-center h-1/4 md:h-[85vh]" />
+      <section className="relative flex flex-col md:flex-row items-center h-screen">
+        {/* <section className="w-full md:w-1/4 bg-lime-500 h-full flex flex-col justify-center items-center" /> */}
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 translate-y-1/2
                   sm:top-0 sm:left-1/2 sm:-translate-x-1/2 sm:translate-y-1/2
@@ -33,24 +43,24 @@ export default function Home() {
             {" "}
             {/* Adjust based on actual size needed */}
             <ElevatedCircleImage
-              src="https://avatars.githubusercontent.com/u/106359255?v=4"
+              src="/images/Dada.jpg"
               alt="Photo of Andrew Edwards"
               fill
             />
           </figure>
         </div>
-        <AnimatedBackground />
+        {/* <AnimatedBackground /> */}
 
         <section className="w-full md:w-3/4 bg-none md:flex md:flex-col md:justify-end md:items-end p-4 min-h-[50vh] pr-24">
-          <section className="text-white mt-48">
+          <section className="dark:text-white mt-48">
             <AnimatedComponent
               animationname="fadeInFromTop"
               iteration={1}
               duration="1s"
-              delay="0s" 
+              delay="0s"
               timing="ease-in-out"
             >
-              <h1 className="font-header mb-4 text-xl sm:text-2xl">
+              <h1 className="font-header mb-4 text-xl sm:text-5xl">
                 Andrew Edwards
               </h1>
             </AnimatedComponent>
@@ -61,7 +71,9 @@ export default function Home() {
               delay="0s"
               timing="ease-in-out"
             >
-              <h2 className="font-extra mb-4 text-md">Software Engineer</h2>
+              <h2 className="font-extra mb-4 text-2xl text-lime-600 dark:text-lime-300">
+                Software Engineer
+              </h2>
             </AnimatedComponent>
             <AnimatedComponent
               animationname="fadeInFromBottom"
@@ -70,7 +82,7 @@ export default function Home() {
               delay="0s"
               timing="ease-in-out"
             >
-              <h3 className="font-lobster text-sm">
+              <h3 className="font-lobster text-2xl">
                 <Typewriter
                   datatext={[
                     "Building Solutions",
@@ -89,6 +101,11 @@ export default function Home() {
               delay="0s"
               timing="ease-in-out"
             >
+              <button
+                className={`mr-3 text-black hover:text-black dark:text-white dark:hover:text-white rounded-2xl font-subheader text-sm lg:text-md 2xl:text-xl border border-lime-500 bg-transparent shadow-sm group px-4 py-1 hover:scale-105 mt-6 `}
+              >
+                Doanload Resume
+              </button>
               <button
                 className={`text-black hover:text-black dark:text-white dark:hover:text-white rounded-2xl font-subheader text-sm lg:text-md 2xl:text-xl border border-lime-500 bg-transparent shadow-sm group px-4 py-1 hover:scale-105 mt-6`}
               >

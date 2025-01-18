@@ -67,38 +67,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
             // className="blur-xl"
           />
 
-          {/* {transitionLeft ? (
-            <motion.div
-              key={router.route + "left"}
-              style={{
-                backgroundColor: "black",
-                position: "fixed",
-                height: "100vh",
-                zIndex: 1000,
-                left: 0,
-              }}
-              transition={transitionSpringPhysics}
-              initial={{ width: "100vw" }}
-              animate={{ width: "0vw" }}
-              exit={{ width: "100vw" }}
-            />
-          ) : (
-            <motion.div
-              key={router.route + "right"}
-              style={{
-                backgroundColor: "black",
-                position: "fixed",
-                height: "100vh",
-                zIndex: 1000,
-                right: 0,
-              }}
-              transition={transitionSpringPhysics}
-              initial={{ width: "100vw" }}
-              animate={{ width: "0vw" }}
-              exit={{ width: "100vw" }}
-            />
-          )} */}
-
           <Component {...pageProps} />
         </motion.div>
       </AnimatePresence>
