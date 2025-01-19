@@ -20,14 +20,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
 
   useEffect(() => {
     const routeIndex = routes.findIndex((route) => route.path === router.route);
-    // console.log(`routeIndex:: ${routeIndex}`);
     if (routeIndex === prevPageIndex || routeIndex === -1) return;
     if (routeIndex > prevPageIndex) {
       setTransitionLeft(true);
-      // console.log("left");
     } else {
       setTransitionLeft(false);
-      // console.log("right");
     }
     setPrevPageIndex(routeIndex);
     // console.log(`prevPageIndex:: ${prevPageIndex}`);
@@ -44,10 +41,10 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
           <motion.div
             key={router.route + "bg"}
             style={{
-              // backgroundColor: transitionColor,
-              backgroundImage: "url('/images/bg-grad.jpeg')",
+              // backgroundColor: rgba(0, 0, 0, 0.4),
+              // backgroundImage: "url('/images/bg-grad.jpeg')",
               backgroundSize: "cover",
-              opacity: 1,
+              opacity: 0.6,
               position: "fixed",
               height: "100vh",
               zIndex: 1000,
@@ -64,7 +61,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
               width: "100vw",
               transition: { delay: 0.2, ease: "easeInOut", duration: 0.5 },
             }}
-            // className="blur-xl"
+            className="dark:bg-black bg-opacity-5 bg-white"
           />
 
           <Component {...pageProps} />

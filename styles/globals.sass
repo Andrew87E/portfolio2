@@ -357,74 +357,18 @@ body
 
 .ae-grad-dark-bg
     // we want a radial gradiant starting with a soft gray color at the bottom middle of the screen and slowly transitioning to black at the top of the screen
-    background: radial-gradient(circle, rgba(27, 27, 27, 0.74) 0%, rgba(2, 2, 2, 0.705) 100%)
+    background: radial-gradient(circle, rgba(54, 54, 54, 0.74) 0%, rgba(2, 2, 2, 0.705) 100%)
 
 .ae-grad-light-bg
     // background: radial-gradient(circle, rgba(27, 27, 27, 0.74) 0%, rgba(2, 2, 2, 0.705) 100%)
     // reverse this gradiant
-    background: radial-gradient(circle, rgba(228, 228, 228, 0.856) 0%, rgba(148, 148, 148, 0.534) 100%)
+    background: radial-gradient(circle, rgba(173, 173, 173, 0.774) 0%, rgba(66, 66, 66, 0.534) 100%)
 
 .ae-dashed-circle
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='100' ry='100' stroke='lime' stroke-width='7' stroke-dasharray='6%2c8 5%2c3 0' stroke-dashoffset='86' stroke-linecap='butt'/%3e%3c/svg%3e")
 
-.timeline-center
-    width: 80vw
-    max-width: 40rem
-
-.timeline-item
-    border-top: 2px dashed var(--clr-secondary)
-    margin: 0
-    padding: 4rem 2rem
-    position: relative
-
-.timeline p
-    margin-bottom: 0
-    color: var(--clr-white)
-
-.timeline-item:nth-child(even)
-    border-left: 2px dashed var(--clr-secondary)
-    border-top-left-radius: 2rem
-    border-bottom-left-radius: 2rem
-    margin-right: 2rem
-    padding-right: 0
-
-.timeline-item:nth-child(odd)
-    border-right: 2px dashed var(--clr-secondary)
-    border-top-right-radius: 2rem
-    border-bottom-right-radius: 2rem
-    margin-left: 2rem
-    padding-left: 0
-
-.timeline-item:first-child
-    border-top: 0
-    border-top-right-radius: 0
-
-.timeline-item:last-child
-    border-bottom-left-radius: 0
-
-.number
-    position: absolute
-    top: 50%
-    -webkit-transform: translate(-50%, -50%)
-    transform: translate(-50%, -50%)
-    margin-bottom: 0
-    background: var(--clr-secondary)
-    width: 2rem
-    height: 2rem
-    border-radius: 50%
-    display: grid
-    place-items: center
-    color: var(--clr-primary)
-    font-weight: bold
-    text-shadow: 2px 2px 0 black
-
-    .timeline-item:nth-child(even) &
-        left: 0
-
-    .timeline-item:nth-child(odd) &
-        right: 0
-        -webkit-transform: translate(50%, -50%)
-        transform: translate(50%, -50%)
-
 // .skill-tag-cloud
 //     background: radial-gradient(circle, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%)
+
+.ae-borderdash
+    border-color: #82fa5f

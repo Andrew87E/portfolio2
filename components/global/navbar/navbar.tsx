@@ -76,7 +76,7 @@ export const Navbar = ({
 
   return (
     <>
-      {currentPage == "Home" ? <section /> : <Name />}
+      {currentPage == "Home" ? <Name size="medium" /> : <Name size="medium" />}
       <ul className="inline-flex mr-4 flex-wrap mt-4 text-md lg:text-lg 2xl:text-2xl">
         <li className={`transition-all duration-700 mr-4`}>
           <button
@@ -100,7 +100,6 @@ export const Navbar = ({
           return (
             <li
               key={index}
-              // align everything in the center/middle
               className={`mr-3 transition-all duration-700 hover:scale-105 ${
                 glory.className
               } ${

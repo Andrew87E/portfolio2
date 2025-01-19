@@ -32,6 +32,10 @@ module.exports = {
         "slide-up": "slide-up 0.7s ease-in-out",
         "slide-down": "slide-down 0.7s ease-in-out",
         "spin-slow": "spin 20s linear infinite",
+        "dashed-move": "dashedBorderMove 20s linear infinite",
+        float: "float 6s ease-in-out infinite",
+        "float-slow": "float 8s ease-in-out infinite",
+        "float-delayed": "float 6s ease-in-out infinite 2s",
       },
       keyframes: {
         "spin-slow": {
@@ -53,6 +57,18 @@ module.exports = {
         "slide-down": {
           "0%": { transform: "translateY(100%)" },
           "100%": { transform: "translateY(0)" },
+        },
+        dashedBorderMove: {
+          "0%": {
+            backgroundPosition: "0 0",
+          },
+          "100%": {
+            backgroundPosition: "100% 0",
+          },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-20px)" },
         },
       },
     },

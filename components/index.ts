@@ -7,6 +7,7 @@ export { DiamondView } from './global/backgrounds/diamond';
 export { ContactForm } from './contactForm';
 export { ElevatedCircleImage } from './elevatedCircleImg';
 export { Carousel } from './carousel';
-export { Timeline } from './timeline';
+export { Timeline } from './timeline/timeline';
 export { SkillTagCloud } from './skillCloud';
 export { StaticSkills } from './skills/skills';
+export { TexturedSphere } from './photosphere'
