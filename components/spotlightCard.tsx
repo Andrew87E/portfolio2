@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
-// we want react component props to be typed
 type CardProps = {
   img: {
     src: string;
@@ -72,44 +72,68 @@ export const SpotlightCard = ({
           onBlur={handleBlur}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className={`relative overflow-hidden rounded-xl border border-slate-800 ae-radial px-8 pt-6 shadow-black shadow-2xl dark:shadow-slate-600 dark:shadow-lg inline-block h-80 ${
-            width ?? "w-96"
-          } ${className}`}
-          initial={{ scale: 0.2 }}
-          animate={{ scale: 1 }}
-          exit={{ scale: 0.2 }}
-          transition={{ duration: 1 }}
+          className={`
+            relative overflow-hidden rounded-xl 
+            border border-lime-500/20
+            bg-white/5 backdrop-blur-sm
+            dark:bg-black/5
+            px-8 pt-6 pb-4
+            shadow-lg
+            transition-all duration-300
+            hover:border-lime-500/40
+            hover:shadow-lime-500/5
+            group
+            ${className}
+          `}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
         >
           <div
             className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
             style={{
               opacity,
-              background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.25), transparent 40%)`,
+              background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(130, 250, 95, 0.1), transparent 40%)`,
             }}
           />
-          <span className="mb-4 inline-flex items-center justify-center rounded-md bg-lime-500 p-2 shadow-lg">
-            <Image
-              src={img.src}
-              width={img.width ?? 300}
-              height={img.height ?? 100}
-              alt={img.alt}
-              className="w-20 h-16"
-            />
-          </span>
-          <h3 className="mb-2 font-medium tracking-tight text-white">
+
+          <div className="flex justify-between items-start mb-4">
+            <span className="inline-flex items-center justify-center rounded-md bg-lime-500/10 p-2">
+              <Image
+                src={img.src}
+                width={img.width ?? 300}
+                height={img.height ?? 100}
+                alt={img.alt}
+                className="w-20 h-16 object-contain"
+              />
+            </span>
+            <ExternalLink className="w-5 h-5 text-lime-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+
+          <h3 className="text-xl font-bold mb-2 text-black dark:text-white">
             {title}
           </h3>
-          <p className="text-sm text-slate-400 mb-4">{body}</p>
-          <section className="w-full text-gray-600 mb-4">
+
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+            {body}
+          </p>
+
+          <div className="flex flex-wrap gap-2">
             {badges?.map((badge, i) => (
               <span
                 key={i}
-                className="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-slate-400 rounded-full border border-slate-400 mb-1"
+                className="
+                  px-3 py-1 text-xs font-medium rounded-full
+                  bg-lime-100 dark:bg-lime-900/30
+                  text-lime-700 dark:text-lime-300
+                  border border-lime-500/20
+                "
               >
                 {badge}
               </span>
             ))}
-          </section>
+          </div>
         </motion.div>
       </Link>
     </AnimatePresence>

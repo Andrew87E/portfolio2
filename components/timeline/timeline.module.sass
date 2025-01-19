@@ -1,0 +1,24 @@
+.timelineItem
+    border-top: 2px dashed theme('colors.lime.500')
+
+    &:nth-child(even)
+        border-left: 2px dashed theme('colors.lime.500')
+        border-top-left-radius: 2rem
+        border-bottom-left-radius: 2rem
+        margin-right: 2rem
+
+    &:nth-child(odd)
+        border-right: 2px dashed theme('colors.lime.500')
+        border-top-right-radius: 2rem
+        border-bottom-right-radius: 2rem
+        margin-left: 2rem
+
+    &:first-child
+        border-top: 0
+        border-top-right-radius: 0
+
+    &:last-child
+        border-bottom-left-radius: 0
+
+    [data-theme='dark'] .timelineItem
+        border-color: theme('colors.lime.400')

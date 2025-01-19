@@ -38,7 +38,7 @@ export const MobileMenu = ({
 
   return (
     <>
-      <Name />
+      <Name size="medium" />
       <div className="w-36"></div>
       <Toggle
         defaultChecked={darkModeValue}
