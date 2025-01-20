@@ -1,6 +1,6 @@
 import { Page, SpotlightCard } from "@/components";
 import { AnimatedComponent } from "react-style-text";
-import { Code, Laptop, Github, Blocks } from "lucide-react";
+import { FloatingIcons } from "@/components";
 import { projects, Project } from "@/data/projects";
 
 const Projects = () => {
@@ -15,20 +15,7 @@ const Projects = () => {
       className="min-h-screen relative overflow-hidden"
     >
       {/* Background Icons */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-        <div className="absolute top-20 left-10 animate-float-slow">
-          <Code size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute top-40 right-20 animate-float-delayed">
-          <Laptop size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute bottom-40 left-1/4 animate-float">
-          <Github size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute bottom-20 right-1/4 animate-float-slow">
-          <Blocks size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-      </div>
+      <FloatingIcons />
 
       <section className="py-12 relative z-10">
         <AnimatedComponent

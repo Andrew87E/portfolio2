@@ -1,16 +1,5 @@
-import { Timeline, Page } from "@/components";
+import { Timeline, Page, FloatingIcons } from "@/components";
 import { AnimatedComponent } from "react-style-text";
-import {
-  BugOff,
-  Code,
-  GitBranch,
-  History,
-  Github,
-  SquareTerminal,
-  Network,
-  Gitlab,
-  CodeXml,
-} from "lucide-react";
 
 const Experience = () => {
   return (
@@ -23,40 +12,7 @@ const Experience = () => {
       }}
       className="min-h-screen relative overflow-hidden"
     >
-      {/* Background Icons */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-        <div className="absolute top-20 left-10 animate-float-slow">
-          <Code size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute top-40 right-20 animate-float-delayed">
-          <GitBranch size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute top-52 left-1/4 animate-float">
-          <History size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute top-52 right-1/4 animate-float">
-          <History size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        {/* Add more positioned icons */}
-        <div className="absolute top-1/2 left-10 animate-float-slow">
-          <BugOff size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute top-[55%] right-32 animate-float-slow">
-          <Github size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute top-[25%] right-64 animate-float-slow">
-          <SquareTerminal size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute top-[28%] left-64 animate-float-slow">
-          <Network size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute bottom-[25%] left-20 animate-float-slow">
-          <Gitlab size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-        <div className="absolute bottom-[25%] right-20 animate-float-slow">
-          <CodeXml size={40} color="#82fa5f" opacity={0.4} />
-        </div>
-      </div>
+      <FloatingIcons />
 
       <div className="py-12 relative z-10">
         <div className="relative text-center">

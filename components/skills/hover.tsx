@@ -16,11 +16,8 @@ export const Hover = (props: {
   return (
     <ReactTooltip
       id={props.id}
-      //   type="success"
       variant="success"
-      //   textColor={props.textColor}
-      //   backgroundColor={props.backgroundColor}
-      className="text-lg transition-transform duration-1000 "
+      className="text-lg transition-transform duration-1000"
     >
       <span>{props.name}</span>
     </ReactTooltip>

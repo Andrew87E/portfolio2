@@ -1,7 +1,7 @@
 import { Page, ElevatedCircleImage } from "@/components";
 import { AnimatedComponent, Typewriter } from "react-style-text";
 import { Code, Database, Download, Mail, Terminal } from "lucide-react";
-import { useEffect, useState } from "react";
+import { FloatingIcons } from "@/components";
 
 const Home = () => {
   return (
@@ -14,8 +14,7 @@ const Home = () => {
       }}
       className="min-h-screen relative overflow-hidden"
     >
-      {/* Background gradient */}
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-lime-500/5 via-transparent to-emerald-500/5" /> */}
+      <FloatingIcons />
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
         <div className="absolute top-20 left-10 animate-float-slow ">

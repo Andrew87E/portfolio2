@@ -372,3 +372,28 @@ body
 
 .ae-borderdash
     border-color: #82fa5f
+
+@keyframes fadeInSpread
+    0%
+        opacity: 0
+        transform: scale(0.95) translateY(-20px)
+
+    100%
+        opacity: 1
+        transform: scale(1) translateY(0)
+
+@keyframes fadeOutGather
+    0%
+        opacity: 1
+        transform: scale(1) translateY(0)
+
+    100%
+        opacity: 0
+        transform: scale(0.95) translateY(-20px)
+
+.animate-fade-in-spread
+    animation: fadeInSpread 0.5s ease-out forwards
+
+.animate-fade-out-gather
+    animation: fadeOutGather 0.5s ease-out forwards
+    pointer-events: none
