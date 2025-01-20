@@ -16,8 +16,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
     damping: 10,
   };
 
-  const transitionColor = "black";
-
   useEffect(() => {
     const routeIndex = routes.findIndex((route) => route.path === router.route);
     if (routeIndex === prevPageIndex || routeIndex === -1) return;
@@ -61,7 +59,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
               width: "100vw",
               transition: { delay: 0.2, ease: "easeInOut", duration: 0.5 },
             }}
-            className="dark:bg-black bg-opacity-5 bg-white"
+            className="bg-black bg-opacity-15 "
           />
 
           <Component {...pageProps} />

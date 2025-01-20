@@ -13,6 +13,7 @@ const nextConfig = {
       "avatars.githubusercontent.com",
       "i.imgur.com",
       "user-images.githubusercontent.com",
+      "photos.app.goo.gl",
     ],
   },
   async headers() {
