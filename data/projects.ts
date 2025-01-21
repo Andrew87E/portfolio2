@@ -103,7 +103,7 @@ export const projects: Project[] = [
         project: "Portfolio Website",
         desc: "A feature-rich portfolio and blog platform built with Next.js and MongoDB. Implements advanced SEO techniques including structured data, dynamic sitemap generation, and optimized meta tags, resulting in top search rankings. Features include an elegant dark mode implementation, lazy-loaded images with blur placeholders, and a custom markdown-based blog engine with code syntax highlighting. Includes integrated analytics for visitor tracking, automated deployment with GitHub Actions, and comprehensive content management system. Achieves 100/100 scores across all Lighthouse metrics.",
         deploy: {
-            url: "https://www.edwards.codes/",
+            url: "https://www.andrewedwards.dev/",
         },
         github: "https://github.com/Andrew87E/Edwards.codes",
         alt: "Deployed Link",
