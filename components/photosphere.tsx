@@ -18,6 +18,7 @@ export const TexturedSphere: React.FC<TexturedSphereProps> = ({
 
   useEffect(() => {
     if (!mountRef.current) return;
+    const currentRef = mountRef.current;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -34,7 +35,7 @@ export const TexturedSphere: React.FC<TexturedSphereProps> = ({
     rendererRef.current = renderer;
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, 0);
-    mountRef.current.appendChild(renderer.domElement);
+    currentRef.appendChild(renderer.domElement);
 
     // Add ambient light with increased intensity
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
@@ -98,10 +99,10 @@ export const TexturedSphere: React.FC<TexturedSphereProps> = ({
 
     // Handle window resize
     const handleResize = () => {
-      if (!mountRef.current || !renderer) return;
+      if (!currentRef || !renderer) return;
 
-      const newWidth = mountRef.current.clientWidth;
-      const newHeight = mountRef.current.clientHeight;
+      const newWidth = currentRef.clientWidth;
+      const newHeight = currentRef.clientHeight;
 
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
@@ -114,8 +115,8 @@ export const TexturedSphere: React.FC<TexturedSphereProps> = ({
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (currentRef && renderer.domElement) {
+        currentRef.removeChild(renderer.domElement);
       }
       renderer.dispose();
       geometry.dispose();

@@ -1,4 +1,5 @@
 // components/ContactForm.tsx
+import Image from "next/image";
 import React, { useState, FormEvent } from "react";
 
 export const ContactForm: React.FC = () => {
@@ -27,7 +28,7 @@ export const ContactForm: React.FC = () => {
   return (
     <div className="flex flex-col md:flex-row bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
       <div className="bg-gray-100 dark:bg-gray-700 flex justify-center items-center md:w-1/2">
-        <img
+        <Image
           src="/images/contact.png"
           alt="Contact Illustration"
           className="max-w-full h-auto"

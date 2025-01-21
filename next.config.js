@@ -13,6 +13,7 @@ const nextConfig = {
       "avatars.githubusercontent.com",
       "i.imgur.com",
       "user-images.githubusercontent.com",
+      "photos.app.goo.gl",
     ],
   },
   async headers() {
@@ -54,6 +55,38 @@ const nextConfig = {
         ],
       },
     ];
+  },
+  webpack: (config, { isServer }) => {
+    // Basic chunk optimization without crypto
+    if (!isServer) {
+      config.optimization.splitChunks = {
+        chunks: "all",
+        minSize: 20000,
+        maxSize: 244000,
+        minChunks: 1,
+        maxAsyncRequests: 30,
+        maxInitialRequests: 30,
+        cacheGroups: {
+          framework: {
+            name: "framework",
+            chunks: "all",
+            test: /[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
+            priority: 40,
+          },
+          commons: {
+            name: "commons",
+            minChunks: 2,
+            priority: 20,
+          },
+          default: {
+            minChunks: 2,
+            priority: 10,
+            reuseExistingChunk: true,
+          },
+        },
+      };
+    }
+    return config;
   },
 };
 

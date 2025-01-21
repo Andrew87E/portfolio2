@@ -1,4 +1,5 @@
 import "@/styles/globals.sass";
+import "@/styles/build.css";
 import "react-tooltip/dist/react-tooltip.css";
 import { AnimatePresence, motion, Spring } from "framer-motion";
 import type { AppProps } from "next/app";
@@ -15,8 +16,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
     stiffness: 80,
     damping: 10,
   };
-
-  const transitionColor = "black";
 
   useEffect(() => {
     const routeIndex = routes.findIndex((route) => route.path === router.route);
@@ -61,7 +60,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
               width: "100vw",
               transition: { delay: 0.2, ease: "easeInOut", duration: 0.5 },
             }}
-            className="dark:bg-black bg-opacity-5 bg-white"
+            className="bg-black bg-opacity-15 "
           />
 
           <Component {...pageProps} />

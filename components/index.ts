@@ -11,3 +11,4 @@ export { Timeline } from './timeline/timeline';
 export { SkillTagCloud } from './skillCloud';
 export { StaticSkills } from './skills/skills';
 export { TexturedSphere } from './photosphere'
+export { FloatingIcons } from './global/floatingIcons';
