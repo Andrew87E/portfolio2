@@ -206,7 +206,7 @@ export default function Contact() {
         className="min-h-screen relative overflow-hidden"
       >
         <FloatingIcons />
-        <div className="relative z-10 w-full min-h-[75vh] flex items-center justify-center px-4">
+        <div className="relative z-10 w-full min-h-[90vh] flex items-center justify-center px-4">
           <AnimatedComponent
             animationname="slideInFromBottom"
             duration="1s"

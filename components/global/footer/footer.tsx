@@ -32,9 +32,9 @@ export const Footer: React.FC = () => {
           )}
           {isMounted && (
             <FooterButton
-              toltipContent="View my Resume"
+              toltipContent="Download my Resume"
               toltipId="resume"
-              link="/resume.pdf"
+              link="/Andrew_Edwards_Resume.docx"
               icon={
                 <AiOutlineFilePdf className="w-4 h-full mx-auto ae-links text-black dark:text-lime-500" />
               }
