@@ -5,27 +5,33 @@ import { Github } from "./githubButton";
 import { MobileMenu } from "../navbar/mobileMenu";
 import { Navbar } from "../navbar/navbar";
 import { useAnimation } from "framer-motion";
+import { useRouter } from "next/router";
 
 type PageProps = {
   currentPage: string;
-  meta: {
-    title?: string;
-    desc?: string;
-  };
+  meta: MetaProps;
   children?: JSX.Element | React.ReactNode;
   className?: string;
 };
 
-export const Page = ({
-  currentPage,
-  meta: { title, desc },
-  children,
-  className,
-}: PageProps) => {
+type MetaProps = {
+  title?: string;
+  desc?: string;
+  image?: string;
+  author?: string;
+  keywords?: string[];
+  type?: string;
+  publishedAt?: string;
+  modifiedAt?: string;
+  
+};
+
+export const Page = ({ currentPage, meta, children, className }: PageProps) => {
   const [darkModeActual, setDarkMode] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const controls = useAnimation();
+  const router = useRouter();
 
   /// handle scroll to hide navbar
   const handleScroll = useCallback(() => {
@@ -132,18 +138,106 @@ export const Page = ({
       onClick={handleClickForMobile}
     >
       <Head>
-        <title>{title}</title>
-        <meta name="title" content={title} />
-        <meta name="description" content={desc} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://edwards.codes" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={desc} />
+        {/* Basic Meta Tags */}
+        <title>{meta.title}</title>
+        <meta name="title" content={meta.title} />
+        <meta name="description" content={meta.desc} />
+        <meta name="author" content={meta.author || "Andrew Edwards"} />
+        <meta name="keywords" content={meta.keywords?.join(", ")} />
+        <meta name="robots" content="index, follow" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#82FA5F" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content={meta.type || "website"} />
+        <meta
+          property="og:url"
+          content={`https://edwards.codes${router.asPath}`}
+        />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.desc} />
+        <meta
+          property="og:image"
+          content={meta.image || "https://edwards.codes/default-og-image.jpg"}
+        />
+        <meta
+          property="og:site_name"
+          content="Andrew Edwards - Software Engineer"
+        />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://edwards.codes" />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={desc} />
+        <meta
+          property="twitter:url"
+          content={`https://edwards.codes${router.asPath}`}
+        />
+        <meta property="twitter:title" content={meta.title} />
+        <meta property="twitter:description" content={meta.desc} />
+        <meta
+          property="twitter:image"
+          content={meta.image || "https://edwards.codes/default-og-image.jpg"}
+        />
+        <meta name="twitter:creator" content="@YourTwitterHandle" />
+
+        {/* If this is an article/blog post */}
+        {meta.type === "article" && (
+          <>
+            <meta
+              property="article:published_time"
+              content={meta.publishedAt}
+            />
+            <meta property="article:modified_time" content={meta.modifiedAt} />
+            <meta
+              property="article:author"
+              content={meta.author || "Andrew Edwards"}
+            />
+            {meta.keywords?.map((keyword) => (
+              <meta property="article:tag" content={keyword} key={keyword} />
+            ))}
+          </>
+        )}
+
+        {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href={`https://edwards.codes${router.asPath}`} />
+
+        {/* If you have alternates for different languages */}
+        <link
+          rel="alternate"
+          hrefLang="en"
+          href={`https://edwards.codes${router.asPath}`}
+        />
+
+        {/* Preconnect to important third-party domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
       </Head>
 
       <main

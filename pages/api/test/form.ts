@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
     res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');

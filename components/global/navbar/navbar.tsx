@@ -72,7 +72,7 @@ export const Navbar = ({
     ) {
       pullPhaseFromApi();
     }
-  }, []);
+  });
 
   return (
     <>
