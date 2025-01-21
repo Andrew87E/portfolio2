@@ -154,9 +154,7 @@
   box-shadow: 0px 0px 2px 3px #00e03c;
 }
 
-.dark-toggle
-  .react-toggle:active:not(.react-toggle--disabled)
-  .react-toggle-thumb {
+.dark-toggle .react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
   -webkit-box-shadow: 0px 0px 5px 5px #00e03c;
   -moz-box-shadow: 0px 0px 5px 5px #00e03c;
   box-shadow: 0px 0px 5px 5px #00e03c;
@@ -195,11 +193,7 @@
 .edwards {
   --interval: 1s;
   display: block;
-  text-shadow:
-    0 0 10px var(--color1),
-    0 0 20px var(--color2),
-    0 0 40px var(--color3),
-    0 0 80px var(--color4);
+  text-shadow: 0 0 10px var(--color1), 0 0 20px var(--color2), 0 0 40px var(--color3), 0 0 80px var(--color4);
   will-change: filter, color;
   filter: saturate(60%);
   animation: flicker steps(100) var(--interval) 1s infinite;
@@ -210,7 +204,6 @@
   font-family: Sriracha;
 }
 
-@apply md
 .h1 {
   @apply text-7xl;
 }
@@ -237,10 +230,10 @@
 }
 
 /* Forms */
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
 
@@ -444,9 +437,7 @@ input[type="search"]::-webkit-search-results-decoration {
   box-shadow: 0px 0px 2px 3px #00e03c;
 }
 
-.dark-toggle
-  .react-toggle:active:not(.react-toggle--disabled)
-  .react-toggle-thumb {
+.dark-toggle .react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
   -webkit-box-shadow: 0px 0px 5px 5px #00e03c;
   -moz-box-shadow: 0px 0px 5px 5px #00e03c;
   box-shadow: 0px 0px 5px 5px #00e03c;
@@ -462,7 +453,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .ae-radial {
   background: rgba(7, 7, 7, 0.9725490196);
-  background: radial-gradient(at center top, #29292a, #01030d);
+  background: radial-gradient(at center top, #29292a, #01030D);
 }
 
 .ae-dark-radial {
@@ -475,7 +466,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .ae-radial {
   background: rgba(7, 7, 7, 0.9725490196);
-  background: radial-gradient(at center top, #29292a, #01030d);
+  background: radial-gradient(at center top, #29292a, #01030D);
 }
 
 body {
@@ -514,9 +505,7 @@ body {
 }
 
 .ae-letters {
-  text-shadow:
-    2px 2px 0 #12ea3a,
-    0 -2px 0 #12ea3a;
+  text-shadow: 2px 2px 0 #12ea3a, 0 -2px 0 #12ea3a;
   font-family: "Space Grotesk", sans-serif;
 }
 
@@ -541,7 +530,7 @@ body {
 }
 
 .ae-blog-header {
-  text-shadow: 1px 1px #7dbf5e;
+  text-shadow: 1px 1px #7DBF5E;
   font-family: "Space Grotesk", sans-serif;
   cursor: default;
 }
@@ -555,29 +544,17 @@ body {
 }
 
 .ae-text-outline {
-  text-shadow:
-    -2px 0 #04d939,
-    0 -2px #04d939,
-    2px 0 #04d939,
-    0 2px #04d939;
+  text-shadow: -2px 0 #04d939, 0 -2px #04d939, 2px 0 #04d939, 0 2px #04d939;
   font-family: "Space Grotesk", sans-serif;
   cursor: default;
 }
 .ae-text-outline-small {
-  text-shadow:
-    -1px 0 #04d939,
-    0 -1px #04d939,
-    1px 0 #04d939,
-    0 1px #04d939;
+  text-shadow: -1px 0 #04d939, 0 -1px #04d939, 1px 0 #04d939, 0 1px #04d939;
   cursor: default;
 }
 
 .ae-name {
-  text-shadow:
-    -0.5px 0 #04d939,
-    0 -0.5px #04d939,
-    0.5px 0 #04d939,
-    0 0.5px #04d939;
+  text-shadow: -0.5px 0 #04d939, 0 -0.5px #04d939, 0.5px 0 #04d939, 0 0.5px #04d939;
   font-size: 38px;
 }
 
@@ -602,11 +579,7 @@ body {
 }
 
 .ae-text-outline-small-dark {
-  text-shadow:
-    -1px 0 #027333,
-    0 -1px #027333,
-    1px 0 #027333,
-    0 1px #027333;
+  text-shadow: -1px 0 #027333, 0 -1px #027333, 1px 0 #027333, 0 1px #027333;
   font-family: "Space Grotesk", sans-serif;
   cursor: default;
 }
@@ -729,7 +702,6 @@ body {
     opacity: 0;
   }
 }
-
 .mp-cc1 {
   width: 40%;
   height: 40%;
@@ -740,19 +712,11 @@ body {
 }
 
 .ae-grad-dark-bg {
-  background: radial-gradient(
-    circle,
-    rgba(54, 54, 54, 0.74) 0%,
-    rgba(2, 2, 2, 0.705) 100%
-  );
+  background: radial-gradient(circle, rgba(54, 54, 54, 0.74) 0%, rgba(2, 2, 2, 0.705) 100%);
 }
 
 .ae-grad-light-bg {
-  background: radial-gradient(
-    circle,
-    rgb(240, 238, 238) 0%,
-    rgb(255, 255, 255) 100%
-  );
+  background: radial-gradient(circle, rgb(240, 238, 238) 0%, rgb(255, 255, 255) 100%);
 }
 
 .ae-dashed-circle {
