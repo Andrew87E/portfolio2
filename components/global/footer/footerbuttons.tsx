@@ -15,8 +15,6 @@ const FooterButton = ({
   link,
   icon,
 }: FooterButtonProps) => {
- 
-
   return (
     <>
       <a
@@ -31,6 +29,8 @@ const FooterButton = ({
         data-tooltip-variant={`${
           document.body.classList.contains("dark") ? "light" : "dark"
         }`}
+        aria-label={toltipContent}
+        aria-describedby={toltipId}
       >
         {icon}
       </a>
