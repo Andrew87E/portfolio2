@@ -1,4 +1,4 @@
-import "@/styles/globals.sass";
+import "@/styles/globals.css";
 import "@/styles/build.css";
 import "react-tooltip/dist/react-tooltip.css";
 import { AnimatePresence, motion, Spring } from "framer-motion";

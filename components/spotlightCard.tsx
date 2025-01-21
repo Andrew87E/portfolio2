@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Info } from "lucide-react";
 import { Tooltip } from "react-tooltip";
 
 type CardProps = {
@@ -14,7 +14,7 @@ type CardProps = {
   };
   title: string;
   body: string;
-  link: string;
+  link?: string;
   github?: string;
   height?: number;
   width?: number;
@@ -135,18 +135,34 @@ export const SpotlightCard = ({
               </>
             )}
             {link && (
-              <Link
-                href={link}
-                data-tooltip-id={`deploy-${title}`}
-                data-tooltip-content="See it in action!"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 hover:bg-lime-500/10 rounded-full transition-colors"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <ExternalLink className="w-5 h-5 text-lime-500" />
+              <>
+                <Link
+                  href={link}
+                  data-tooltip-id={`deploy-${title}`}
+                  data-tooltip-content="See it in action!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 hover:bg-lime-500/10 rounded-full transition-colors"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <ExternalLink className="w-5 h-5 text-lime-500" />
+                </Link>
                 <Tooltip id={`deploy-${title}`} />
-              </Link>
+              </>
+            )}
+            {!link && !github && (
+              <>
+                <Link
+                  href="/contact"
+                  data-tooltip-id={`contact-${title}`}
+                  data-tooltip-content="Contact me for more details about this closed source project!"
+                  className="p-2 hover:bg-lime-500/10 rounded-full transition-colors"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Info className="w-5 h-5 text-lime-500" />
+                </Link>
+                <Tooltip id={`contact-${title}`} />
+              </>
             )}
           </div>
         </div>
@@ -193,6 +209,11 @@ export const SpotlightCard = ({
               {badge}
             </span>
           ))}
+          {!link && !github && (
+            <span className="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300 border border-gray-500/20">
+              Closed Source
+            </span>
+          )}
         </motion.div>
       </motion.div>
     </AnimatePresence>
