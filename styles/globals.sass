@@ -1,13 +1,15 @@
+@use "sass:meta"
 @tailwind base
 @tailwind components
 @tailwind utilities
-@import "./variables"
-@import "./toggle"
-@import "./utilities"
+@include meta.load-css("toggle")
+@include meta.load-css("utilities")
+@include meta.load-css("toggle")
+@include meta.load-css("nav")
 // @import "./animations"
 // @import "./scrollbar"
 // @import "./buttons"
-@import "./nav"
+@include meta.load-css("nav")
 @import url("https://fonts.googleapis.com/css2?family=Lustria&family=Poppins&family=Assistant&family=Roboto+Mono&family=Lobster&family=Space+Grotesk:wght@500&display=swap")
 
 // font-family: 'Lustria', serif;
@@ -22,6 +24,13 @@
 //     letter-spacing: 5px;
 //     text-shadow: 4px 4px 0 $light-green, 6px 6px 0 $dark-green;
 // }
+
+$dark-blue: #012340
+$dark-teal: #025959
+$dark-green: #027333
+$med-green: #7DBF5E
+$light-green: #04d939
+$logo-green: #12ea3a
 
 body
     // overflow-y: hidden /* Hide vertical scrollbar */
@@ -277,74 +286,74 @@ body
         transform: rotate(-180deg)
         opacity: 0
 
-@-moz-keyframes move
-    0% 
-    left: 0
-    opacity: 0
+// @-moz-keyframes move
+//     0% 
+//     left: 0
+//     opacity: 0
 
-    35% 
-    left: 41%
-    -moz-transform: rotate(0deg)
-    transform: rotate(0deg)
-    opacity: 1
+//     35% 
+//     left: 41%
+//     -moz-transform: rotate(0deg)
+//     transform: rotate(0deg)
+//     opacity: 1
 
-    65% 
-    left: 59%
-    -moz-transform: rotate(0deg)
-    transform: rotate(0deg)
-    opacity: 1
+//     65% 
+//     left: 59%
+//     -moz-transform: rotate(0deg)
+//     transform: rotate(0deg)
+//     opacity: 1
 
-    100% 
-    left: 100%
-    -moz-transform: rotate(-180deg)
-    transform: rotate(-180deg)
-    opacity: 0
+//     100% 
+//     left: 100%
+//     -moz-transform: rotate(-180deg)
+//     transform: rotate(-180deg)
+//     opacity: 0
 
-@-webkit-keyframes move
-    0% 
-    left: 0
-    opacity: 0
+// @-webkit-keyframes move
+//     0% 
+//     left: 0
+//     opacity: 0
 
-    35% 
-    left: 41%
-    -webkit-transform: rotate(0deg)
-    transform: rotate(0deg)
-    opacity: 1
+//     35% 
+//     left: 41%
+//     -webkit-transform: rotate(0deg)
+//     transform: rotate(0deg)
+//     opacity: 1
 
-    65% 
-    left: 59%
-    -webkit-transform: rotate(0deg)
-    transform: rotate(0deg)
-    opacity: 1
+//     65% 
+//     left: 59%
+//     -webkit-transform: rotate(0deg)
+//     transform: rotate(0deg)
+//     opacity: 1
 
-    100% 
-    left: 100%
-    -webkit-transform: rotate(-180deg)
-    transform: rotate(-180deg)
-    opacity: 0
+//     100% 
+//     left: 100%
+//     -webkit-transform: rotate(-180deg)
+//     transform: rotate(-180deg)
+//     opacity: 0
 
-@-o-keyframes move
-    0% 
-    left: 0
-    opacity: 0
+// @-o-keyframes move
+//     0% 
+//     left: 0
+//     opacity: 0
 
-    35% 
-    left: 41%
-    -o-transform: rotate(0deg)
-    transform: rotate(0deg)
-    opacity: 1
+//     35% 
+//     left: 41%
+//     -o-transform: rotate(0deg)
+//     transform: rotate(0deg)
+//     opacity: 1
 
-    65% 
-    left: 59%
-    -o-transform: rotate(0deg)
-    transform: rotate(0deg)
-    opacity: 1
+//     65% 
+//     left: 59%
+//     -o-transform: rotate(0deg)
+//     transform: rotate(0deg)
+//     opacity: 1
 
-    100% 
-    left: 100%
-    -o-transform: rotate(-180deg)
-    transform: rotate(-180deg)
-    opacity: 0
+//     100% 
+//     left: 100%
+//     -o-transform: rotate(-180deg)
+//     transform: rotate(-180deg)
+//     opacity: 0
 
 // blob 1 cotton candy
 .mp-cc1

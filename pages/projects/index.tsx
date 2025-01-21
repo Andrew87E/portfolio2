@@ -164,7 +164,7 @@ const Projects = () => {
                       alt: project.alt,
                     }}
                     badges={project.badges}
-                    link={project.deploy.url ?? "#"}
+                    link={project.deploy.url ?? undefined}
                     github={project.github}
                     className="w-full h-full"
                   />
