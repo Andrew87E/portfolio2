@@ -1,4 +1,5 @@
 import "@/styles/globals.sass";
+import "@/styles/build.css";
 import "react-tooltip/dist/react-tooltip.css";
 import { AnimatePresence, motion, Spring } from "framer-motion";
 import type { AppProps } from "next/app";
