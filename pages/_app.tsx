@@ -5,6 +5,7 @@ import { AnimatePresence, motion, Spring } from "framer-motion";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import { routes } from "@/data/global";
+import { Analytics } from "@vercel/analytics/react"
 
 const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
   const [transitionLeft, setTransitionLeft] = useState(true);
