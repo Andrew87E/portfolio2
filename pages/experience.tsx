@@ -133,6 +133,7 @@ const Experience = () => {
         className="min-h-screen relative overflow-hidden"
       >
         <FloatingIcons />
+        <div className="h-8" />
 
         <div className="py-12 relative z-10">
           <div className="relative text-center">

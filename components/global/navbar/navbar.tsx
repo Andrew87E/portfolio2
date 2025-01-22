@@ -127,13 +127,13 @@ export const Navbar = ({
                 } transition-all duration-300`}
               >
                 Contact Me
-                <ArrowRight
+                {/* <ArrowRight
                   className={`ml-1 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1 ${
                     darkModeValue
                       ? "text-lime-500 group-hover:text-white"
                       : "text-lime-600 group-hover:text-black"
                   }`}
-                />
+                /> */}
               </span>
             </Link>
           </li>
