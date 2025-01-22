@@ -120,11 +120,7 @@ export const Navbar = ({
               rel="canonical"
             >
               <span
-                className={`inline-flex items-center ${
-                  darkModeValue
-                    ? "bg-gradient-to-r from-lime-400 via-emerald-500 to-lime-500 text-transparent bg-clip-text hover:from-lime-400 hover:via-white hover:to-lime-400"
-                    : "bg-gradient-to-r from-lime-400 via-emerald-500 to-lime-500 text-transparent bg-clip-text hover:from-lime-700 hover:via-black hover:to-lime-700"
-                } transition-all duration-300`}
+                className={`inline-flex items-center text-black dark:text-white hover:scale-105 hover:text-lime-500 transition-all duration-300`}
               >
                 Contact Me
                 {/* <ArrowRight
