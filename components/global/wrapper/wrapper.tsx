@@ -4,7 +4,7 @@ import { Footer } from "../footer/footer";
 import { Github } from "./githubButton";
 import { MobileMenu } from "../navbar/mobileMenu";
 import { Navbar } from "../navbar/navbar";
-import { useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useRouter } from "next/router";
 
 type PageProps = {
@@ -23,30 +23,46 @@ type MetaProps = {
   type?: string;
   publishedAt?: string;
   modifiedAt?: string;
-  
 };
 
 export const Page = ({ currentPage, meta, children, className }: PageProps) => {
   const [darkModeActual, setDarkMode] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isNavVisible, setIsNavVisible] = useState(true);
   const controls = useAnimation();
   const router = useRouter();
 
   /// handle scroll to hide navbar
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
+    const scrollingDown = currentScrollY > lastScrollY;
+    const scrollDelta = Math.abs(currentScrollY - lastScrollY);
 
-    if (currentScrollY > lastScrollY) {
-      // Scrolling down
-      controls.start({ top: "-60px" });
-    } else {
-      // Scrolling up
-      controls.start({ top: "0px" });
+    // Only trigger hide/show for significant scroll amounts
+    if (scrollDelta > 10) {
+      if (scrollingDown && currentScrollY > 100) {
+        setIsNavVisible(false);
+      } else {
+        setIsNavVisible(true);
+      }
     }
 
     setLastScrollY(currentScrollY);
-  }, [controls, lastScrollY]);
+  }, [lastScrollY]);
+
+  const throttledScrollHandler = useCallback(() => {
+    let timeout: NodeJS.Timeout | null = null;
+    return () => {
+      if (!timeout) {
+        timeout = setTimeout(() => {
+          handleScroll();
+          clearTimeout(timeout!);
+          timeout = null;
+        }, 100);
+      }
+    };
+  }, [handleScroll]);
 
   /// handle dark mode change
   const handleDarkChange = () => {
@@ -65,62 +81,49 @@ export const Page = ({ currentPage, meta, children, className }: PageProps) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // check if user has set a preference for dark mode
+      // Dark mode preference handling
       const localPref = localStorage.getItem("color-theme");
-      // console.log(window.matchMedia("(prefers-color-scheme: dark)"));
-      // console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
-      document.body.classList.add("transition-colors");
-      document.body.classList.add("duration-500");
-      document.body.classList.add("ease-in-out");
-      /// if no local preference, check os preference
+      document.body.classList.add(
+        "transition-colors",
+        "duration-500",
+        "ease-in-out"
+      );
+
       if (!localPref) {
         const userPrefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)"
         ).matches;
-
-        /// if os preference is dark, set dark mode
         if (userPrefersDark || localPref === "dark") {
-          // console.log("this hits");
           setDarkMode(true);
           localStorage.setItem("color-theme", "dark");
           document.body.classList.remove("bg-slate-200");
-          document.body.classList.add("dark");
-          document.body.classList.add("bg-black");
-          /// if os preference is light, set light mode
+          document.body.classList.add("dark", "bg-black");
         } else {
           setDarkMode(false);
           localStorage.setItem("color-theme", "light");
           document.body.classList.add("bg-slate-200");
-          document.body.classList.remove("dark");
-          document.body.classList.remove("bg-black");
+          document.body.classList.remove("dark", "bg-black");
         }
-        /// if local preference is set, use that
       } else {
-        /// if local preference is dark, set dark mode
         if (localPref === "dark") {
           setDarkMode(true);
           document.body.classList.remove("bg-slate-200");
-          document.body.classList.add("dark");
-          document.body.classList.add("bg-black");
-          /// if local preference is light, set light mode
+          document.body.classList.add("dark", "bg-black");
         } else {
           setDarkMode(false);
           document.body.classList.add("bg-slate-200");
-          document.body.classList.remove("dark");
-          document.body.classList.remove("bg-black");
+          document.body.classList.remove("dark", "bg-black");
         }
       }
     }
 
-    /// add event listener for scroll to hide navbar
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    const throttledHandler = throttledScrollHandler();
+    window.addEventListener("scroll", throttledHandler, { passive: true });
 
-    /// cleanup
     return () => {
-      /// remove event listener
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", throttledHandler);
     };
-  }, [handleScroll]);
+  }, [throttledScrollHandler]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -243,9 +246,16 @@ export const Page = ({ currentPage, meta, children, className }: PageProps) => {
       <main
         className={`${darkModeActual ? "ae-grad-dark-bg" : "ae-grad-light-bg"}`}
       >
-        <nav
-          className={`fixed top-0 right-0 left-0 h-16 inline-flex  items-center justify-between z-30`}
-          id="navBar"
+        <motion.nav
+          className={`fixed top-0 right-0 left-0 h-16 inline-flex items-center justify-between z-30 bg-opacity-90 backdrop-blur-sm `}
+          initial={{ y: 0 }}
+          animate={{
+            y: isNavVisible ? 0 : -64,
+            transition: {
+              duration: 0.3,
+              ease: "easeInOut",
+            },
+          }}
         >
           <div className="hidden md:inline-flex w-full items-center justify-between pb-2">
             <Navbar
@@ -263,13 +273,12 @@ export const Page = ({ currentPage, meta, children, className }: PageProps) => {
               setShowMenu={setShowMenu}
             />
           </div>
-        </nav>
+        </motion.nav>
 
         {children}
         <Github />
         <Footer />
       </main>
-      {/* {currentPage !== "Home" && <Footer />} */}
     </div>
   );
 };

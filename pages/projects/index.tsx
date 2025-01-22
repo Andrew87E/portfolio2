@@ -116,6 +116,7 @@ const Projects = () => {
       >
         {/* Background Icons */}
         <FloatingIcons />
+        <div className="h-8" />
 
         <section className="py-12 relative z-10">
           <AnimatedComponent
