@@ -3,6 +3,7 @@ import { routes } from "../../../data/global";
 import { Name } from "./name";
 import { glory } from "../fonts/fonts";
 import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 interface NavbarProps {
   currentPage: any;
@@ -29,7 +30,6 @@ export const Navbar = ({
         `https://api.farmsense.net/v2/moonphases/?d=${timeStamp}`
       );
       const data = await res.json();
-      // console.log(data);
       const phase = data[0].Phase;
       console.log(phase);
       setMoonPhase(phase);
@@ -77,22 +77,20 @@ export const Navbar = ({
   return (
     <>
       {currentPage == "Home" ? <Name size="medium" /> : <Name size="medium" />}
-      <ul className="inline-flex mr-4 flex-wrap mt-4 text-md lg:text-lg 2xl:text-2xl">
+      <ul className="inline-flex mr-4 flex-wrap mt-4 text-md lg:text-lg 2xl:text-2xl items-center">
         <li className={`transition-all duration-700 mr-4`}>
           <button
             className={`rounded-full hover:animate-spin-slow focus:outline-none focus:ring-0 transition ease-in-out`}
             onClick={darkModeHandle}
             data-tooltip-id="dark-mode"
-            data-tooltip-content={`${darkModeValue ? `` : `Current Phase: ${moonPhase}`}`} // TODO: Add tooltip for dark mode
+            data-tooltip-content={`${darkModeValue ? `` : `Current Phase: ${moonPhase}`}`}
           >
             {darkModeValue ? (
-              // ☀️ doesnt show correctly in vscode
               <span className="text-yellow-500">☀️</span>
             ) : (
               <span className="text-slate-400">{moons[currentMoon]}</span>
             )}
           </button>
-          {/* <Tooltip id="dark-mode" place="bottom" /> */}
         </li>
         {routes.map((item, index) => {
           if (item.title === "Contact") return;
@@ -105,7 +103,7 @@ export const Navbar = ({
               } ${
                 currentPage === item.title
                   ? `text-green-700 dark:text-lime-500 hover:text-lime-800 hover:animate-pulse`
-                  : `opacity-90 hover:opacity-100 transition-opacity dark:text-white hover:text-white hover:border-gray-300 hover:duration-100 `
+                  : `opacity-90 hover:opacity-100 transition-opacity dark:text-white hover:text-white hover:border-gray-300 hover:duration-100`
               }`}
             >
               <Link href={item.path} rel="canonical">
@@ -115,17 +113,28 @@ export const Navbar = ({
           );
         })}
         {currentPage === "Contact" ? null : (
-          <li className={`transition-all duration-700 mr-4 `}>
-            <Link href="/contact" rel="canonical">
-              <button
-                className={`rounded-2xl font-subheader text-sm lg:text-md 2xl:text-xl border border-lime-500 bg-transparent shadow-sm group px-4 py-1 -mt-2 hover:scale-105 ${
+          <li className={`transition-all duration-700`}>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center"
+              rel="canonical"
+            >
+              <span
+                className={`inline-flex items-center ${
                   darkModeValue
-                    ? "text-white hover:text-white"
-                    : "text-black hover:text-black"
-                }`}
+                    ? "bg-gradient-to-r from-lime-400 via-emerald-500 to-lime-500 text-transparent bg-clip-text hover:from-lime-400 hover:via-white hover:to-lime-400"
+                    : "bg-gradient-to-r from-lime-400 via-emerald-500 to-lime-500 text-transparent bg-clip-text hover:from-lime-700 hover:via-black hover:to-lime-700"
+                } transition-all duration-300`}
               >
                 Contact Me
-              </button>
+                <ArrowRight
+                  className={`ml-1 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1 ${
+                    darkModeValue
+                      ? "text-lime-500 group-hover:text-white"
+                      : "text-lime-600 group-hover:text-black"
+                  }`}
+                />
+              </span>
             </Link>
           </li>
         )}
