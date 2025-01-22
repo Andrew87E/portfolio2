@@ -220,7 +220,7 @@ const Home = () => {
                       "Delivering Innovation",
                     ]}
                     cursorcolor="lime"
-                    typingspeed={100}
+                    typingspeed={300}
                   />
                   <div className="absolute -inset-x-6 -inset-y-2 bg-lime-500/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
                 </h3>
@@ -257,7 +257,7 @@ const Home = () => {
                     <div className="absolute inset-0 bg-lime-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                   </button>
 
-                  <button
+                  <Link
                     className="
                   group
                   relative overflow-hidden
@@ -270,11 +270,12 @@ const Home = () => {
                   hover:border-lime-400
                   flex items-center gap-2
                 "
+                    href="/contact"
                   >
                     <Mail className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
                     Contact Me
                     <div className="absolute inset-0 bg-lime-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                  </button>
+                  </Link>
                 </div>
               </AnimatedComponent>
             </section>

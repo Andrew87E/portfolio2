@@ -68,11 +68,36 @@ export const projects: Project[] = [
     {
         project: "Flutter Weather App",
         desc: "A sophisticated cross-platform weather application built with Flutter, leveraging the OpenWeather API for accurate forecasting. Features an intuitive, animated UI with dynamic weather visualizations, location-based forecasting with background updates, and detailed meteorological metrics. Implements intelligent caching for offline access and bandwidth optimization, along with custom animations for various weather conditions. Includes widgets for home screen updates and push notifications for severe weather alerts.",
-        deploy: {},
+        deploy: {
+            url: "https://flutter-weather-actual.web.app/",
+        },
         github: "https://github.com/Andrew87E/Weather_App",
         alt: "Deployed Link",
         img: "https://github.com/Andrew87E/Weather_App/raw/master/assets/img/top.png",
         badges: ["Dart", "Flutter", "RESTful APIs", "Mobile Development", "Location Services", "State Management"],
+        type: ProjectType.OpenSource,
+    },
+    {
+        project: "Weather API Server",
+        desc: "A high-performance API server powering a modern weather application. Features intelligent caching with Redis and robust user management via PostgreSQL, optimizing third-party API consumption while delivering real-time weather data. Implements multiple weather data providers including OpenWeather, Pirate Weather, and Dark Sky for comprehensive coverage.",
+        deploy: {},
+        github: "https://github.com/Andrew87E/Weather_App",
+        alt: "Deployed Link",
+        img: "https://gnome-terminator.org/assets/images/terminator-top-gtk-dark.png",
+        badges: [
+            "TypeScript",
+            "Node.js",
+            "Express",
+            "PostgreSQL",
+            "Redis",
+            "RESTful APIs",
+            "Microservices",
+            "Docker",
+            "Vercel",
+            "OpenWeather",
+            "Pirate Weather",
+            "Dark Sky"
+        ],
         type: ProjectType.OpenSource,
     },
     {

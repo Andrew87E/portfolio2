@@ -14,6 +14,7 @@ const nextConfig = {
       "i.imgur.com",
       "user-images.githubusercontent.com",
       "photos.app.goo.gl",
+      "gnome-terminator.org",
     ],
   },
   async headers() {
