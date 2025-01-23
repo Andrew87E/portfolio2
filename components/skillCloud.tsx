@@ -91,7 +91,7 @@ export const SkillTagCloud: React.FC<SkillTagCloudProps> = ({
     { name: "auth0", color: "#EB5424" },
   ].map((icon) => ({
     ...icon,
-    url: `https://cdn.simpleicons.org/${icon.name}/${icon.color.replace("#", "")}`,
+    url: `https://cdn.simpleicons.org/${icon.name}/${icon.color.replace("#", "")}/1200.svg`,
   }));
 
   const filteredIcons = icons.filter((icon) => {
@@ -165,12 +165,35 @@ export const SkillTagCloud: React.FC<SkillTagCloudProps> = ({
 
     const canvasContainer = containerRef.current;
 
-    renderer.current = new THREE.WebGLRenderer({
-      antialias: true,
+    // Updated renderer settings for Firefox compatibility
+    // Get the WebGL context with specific attributes for Firefox
+    const canvas = document.createElement('canvas');
+    const contextAttributes: WebGLContextAttributes = {
       alpha: true,
-      powerPreference: "high-performance",
+      depth: true,
+      stencil: false,
+      antialias: true,
+      premultipliedAlpha: false,
+      preserveDrawingBuffer: true,
+      powerPreference: 'high-performance',
+      failIfMajorPerformanceCaveat: false,
+    };
+    
+    const context = canvas.getContext('webgl2', contextAttributes) || 
+                   canvas.getContext('webgl', contextAttributes);
+                   
+    if (!context) {
+      console.error('WebGL not supported');
+      return;
+    }
+    
+    renderer.current = new THREE.WebGLRenderer({
+      canvas,
+      context: context as WebGLRenderingContext,
+      ...contextAttributes
     });
-    renderer.current.setPixelRatio(window.devicePixelRatio);
+    
+    renderer.current.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for better performance
     renderer.current.setSize(width, height);
     canvasContainer.appendChild(renderer.current.domElement);
 
@@ -185,40 +208,65 @@ export const SkillTagCloud: React.FC<SkillTagCloudProps> = ({
     pointLight.position.set(10, 10, 10);
     scene.current.add(pointLight);
 
-    // Load textures with error handling
-    const loader = new THREE.TextureLoader();
+    // Updated texture loading for Firefox compatibility
     icons.forEach((icon, index) => {
-      loader.load(
-        icon.url,
-        (texture) => {
-          const phi = Math.acos(-1 + (2 * index) / icons.length);
-          const theta = Math.sqrt(icons.length * Math.PI) * phi;
+      // Create a texture loader with explicit settings
+      const loader = new THREE.TextureLoader();
+      loader.crossOrigin = 'anonymous';
 
-          const sprite = new THREE.Sprite(
-            new THREE.SpriteMaterial({
-              map: texture,
-              transparent: true,
-              opacity: 0.9,
-              color: new THREE.Color(icon.color),
-            })
-          );
+      // Add a loading manager to handle all textures
+      const loadingManager = new THREE.LoadingManager();
+      loadingManager.onError = (url) => {
+        console.warn('Error loading texture:', url);
+      };
 
-          sprite.scale.set(spriteSize, spriteSize, 1);
-          sprite.position.setFromSphericalCoords(radius, phi, theta);
+      loader.manager = loadingManager;
 
-          sprite.userData = {
-            name: icon.name,
-            originalScale: spriteSize,
-          };
+      // Try to load the texture with explicit CORS settings
+      const texturePromise = new Promise<THREE.Texture>((resolve, reject) => {
+        const texture = loader.load(
+          icon.url,
+          (loadedTexture) => {
+            loadedTexture.needsUpdate = true;
+            resolve(loadedTexture);
+          },
+          undefined,
+          (error) => {
+            console.warn(`Failed to load icon for ${icon.name}:`, error);
+            reject(error);
+          }
+        );
+      });
 
-          group.current.add(sprite);
-          sprites.current.push(sprite);
-        },
-        undefined,
-        (error) => {
-          console.warn(`Failed to load icon for ${icon.name}:`, error);
-        }
-      );
+      // Create and add the sprite once texture is loaded
+      // Create and add the sprite once texture is loaded
+      texturePromise.then((texture) => {
+        const phi = Math.acos(-1 + (2 * index) / icons.length);
+        const theta = Math.sqrt(icons.length * Math.PI) * phi;
+
+        const material = new THREE.SpriteMaterial({
+          map: texture,
+          transparent: true,
+          opacity: 0.9,
+          color: new THREE.Color(icon.color),
+          depthTest: false,
+          depthWrite: false,
+        });
+
+        const sprite = new THREE.Sprite(material);
+        sprite.scale.set(spriteSize, spriteSize, 1);
+        sprite.position.setFromSphericalCoords(radius, phi, theta);
+
+        sprite.userData = {
+          name: icon.name,
+          originalScale: spriteSize,
+        };
+
+        group.current.add(sprite);
+        sprites.current.push(sprite);
+      }).catch((error) => {
+        console.warn(`Failed to create sprite for ${icon.name}:`, error);
+      });
     });
 
     scene.current.add(group.current);
@@ -272,6 +320,7 @@ export const SkillTagCloud: React.FC<SkillTagCloudProps> = ({
       group.current.rotation.y += rotationSpeed + mx;
       group.current.rotation.x += my;
 
+      // Ensure sprites always face the camera
       group.current.children.forEach((sprite) => {
         sprite.lookAt(camera.current.position);
       });
@@ -279,13 +328,13 @@ export const SkillTagCloud: React.FC<SkillTagCloudProps> = ({
       renderer.current.render(scene.current, camera.current);
     };
 
-    // Start animation only if visible
     if (isVisible) {
       animate();
     }
 
     return () => {
       if (renderer.current) {
+        renderer.current.dispose(); // Properly dispose of WebGL context
         canvasContainer.removeChild(renderer.current.domElement);
       }
       if (animationFrameId.current) {
