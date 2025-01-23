@@ -122,7 +122,7 @@ export default function About() {
           </AnimatedComponent>
 
           {/* Main Content */}
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto min-h-screen">
             <AnimatedComponent
               animationname="fadeInFromBottom"
               iteration={1}
