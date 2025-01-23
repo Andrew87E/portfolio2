@@ -6,6 +6,8 @@ import { MobileMenu } from "../navbar/mobileMenu";
 import { Navbar } from "../navbar/navbar";
 import { motion, useAnimation } from "framer-motion";
 import { useRouter } from "next/router";
+import { Toaster } from "react-hot-toast";
+import { DarkReaderDetector } from "@/hooks/useDarkReaderDetection";
 
 type PageProps = {
   currentPage: string;
@@ -277,6 +279,8 @@ export const Page = ({ currentPage, meta, children, className }: PageProps) => {
 
         {children}
         <Github />
+        <DarkReaderDetector />
+        <Toaster />
         <Footer />
       </main>
     </div>
