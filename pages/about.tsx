@@ -97,6 +97,7 @@ export default function About() {
         className="min-h-screen relative overflow-hidden"
       >
         <FloatingIcons />
+        <div className="h-10" />
         <div className="relative z-10 px-6 py-12">
           {/* Header Section */}
           <AnimatedComponent
