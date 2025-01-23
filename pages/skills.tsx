@@ -8,9 +8,12 @@ import {
 } from "@/components";
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import { AnimatedComponent } from "react-style-text";
 
 export default function Skills() {
   const [width, setWidth] = useState<number>(375);
+  const [isFirefox, setIsFirefox] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
   // Technical skills categorization stays the same
   const skillCategories = {
@@ -66,8 +69,10 @@ export default function Skills() {
   };
 
   useEffect(() => {
+    setIsMounted(true);
     if (typeof window !== "undefined") {
       setWidth(Math.min(window.innerWidth * 0.8, 800));
+      setIsFirefox(navigator.userAgent.toLowerCase().includes("firefox"));
     }
 
     const handleResize = () => {
@@ -117,46 +122,75 @@ export default function Skills() {
         <section className="min-h-screen w-full transition-colors duration-300">
           <FloatingIcons />
           <div className="h-8" />
+
           {/* Hero Section with 3D Sphere */}
-          <section className="relative h-screen flex flex-col items-center justify-center">
+          <section className="relative flex flex-col items-center justify-center pt-10">
             <div className="container px-4 mx-auto text-center relative z-10">
-              <h1 className="font-header text-5xl mb-4 text-black dark:text-white inline-block relative">
-                Technical Expertise
-                <div className="absolute -inset-x-8 h-[2px] -bottom-2 bg-gradient-to-r from-transparent via-lime-500 to-transparent" />
-                <div className="absolute -right-4 top-0 h-16 w-[2px] bg-gradient-to-b from-lime-500/20 to-transparent" />
-              </h1>
-              <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-12 transition-colors duration-300">
-                Full-stack development expertise spanning web, mobile, and cloud
-                technologies, with a focus on creating scalable, performant
-                applications.
-              </p>
-
-              {/* ThreeJS Sphere Container */}
-              <div className="relative w-full max-w-2xl mx-auto rounded-3xl p-8 transition-all duration-300">
-                <div className="aspect-square">
-                  <SkillTagCloud
-                    width={width}
-                    height={width}
-                    radius={Math.max(width / 8, 27)}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-              <svg
-                className="w-6 h-6 text-gray-600 dark:text-gray-400 transition-colors duration-300"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              <AnimatedComponent
+                animationname="slideInFromTop"
+                iteration={1}
+                duration="1s"
+                delay="0s"
+                timing="ease-in-out"
               >
-                <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-              </svg>
+                <h1 className="font-header text-5xl mb-4 text-black dark:text-white inline-block relative">
+                  Technical Expertise
+                  <div className="absolute -inset-x-8 h-[2px] -bottom-2 bg-gradient-to-r from-transparent via-lime-500 to-transparent" />
+                  <div className="absolute -right-4 top-0 h-16 w-[2px] bg-gradient-to-b from-lime-500/20 to-transparent" />
+                </h1>
+              </AnimatedComponent>
+              <AnimatedComponent
+                animationname="slideInFromBottom"
+                iteration={1}
+                duration="1s"
+                delay="0s"
+                timing="ease-in-out"
+              >
+                <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-12 transition-colors duration-300">
+                  Full-stack development expertise spanning web, mobile, and
+                  cloud technologies, with a focus on creating scalable,
+                  performant applications.
+                </p>
+              </AnimatedComponent>
             </div>
+
+            {/* ThreeJS Sphere Container */}
+            {isMounted && !isFirefox && (
+              <>
+                <AnimatedComponent
+                  animationname="slideInFromTop"
+                  iteration={1}
+                  duration="1s"
+                  delay="0s"
+                  timing="ease-in-out"
+                >
+                  <div className="relative w-full mx-auto rounded-3xl p-8 transition-all duration-500">
+                    <div className="aspect-square">
+                      <SkillTagCloud
+                        width={width}
+                        height={width}
+                        radius={Math.max(width / 8, 27)}
+                      />
+                    </div>
+                  </div>
+                </AnimatedComponent>
+
+                {/* Scroll Indicator */}
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                  <svg
+                    className="w-6 h-6 text-gray-600 dark:text-gray-400 transition-colors duration-300"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                  </svg>
+                </div>
+              </>
+            )}
           </section>
 
           {/* Detailed Skills Section */}
