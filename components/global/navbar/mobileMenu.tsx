@@ -73,7 +73,7 @@ export const MobileMenu = ({
         onAnimationEnd={() => {
           setIsAnimating(false);
         }}
-        className={`${currentAnimation} list-none inline-block fixed right-0 top-16 px-5 font-header bg-transparent transition-all border-2 border-black transform duration-1000 py-10 shadow-2xl  ${
+        className={`${currentAnimation} list-none inline-block fixed right-0 top-16 px-5 font-header bg-white dark:bg-black transition-all border-2 border-black transform duration-1000 py-10 shadow-2xl  ${
           showMenu ? "block" : isAnimating ? "block" : "hidden"
         } 
         `}
