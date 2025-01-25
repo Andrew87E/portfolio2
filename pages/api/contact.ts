@@ -38,14 +38,14 @@ const validateRequest = (body: any): { isValid: boolean; error?: string } => {
 
     const { name, email, message, timestamp, token } = body as FormData;
 
-    // Log the received data for debugging
-    console.log('Received form data:', {
-        name: name ? 'present' : 'missing',
-        email: email ? 'present' : 'missing',
-        message: message ? 'present' : 'missing',
-        timestamp: timestamp ? 'present' : 'missing',
-        token: token ? 'present' : 'missing'
-    });
+    // // Log the received data for debugging
+    // console.log('Received form data:', {
+    //     name: name ? 'present' : 'missing',
+    //     email: email ? 'present' : 'missing',
+    //     message: message ? 'present' : 'missing',
+    //     timestamp: timestamp ? 'present' : 'missing',
+    //     token: token ? 'present' : 'missing'
+    // });
 
     if (!name || !email || !message || !timestamp || !token) {
         const missingFields = [];
@@ -64,7 +64,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    console.log('Request method:', req.method);
+    // console.log('Request method:', req.method);
 
     // Method check
     if (req.method !== 'POST') {
@@ -76,10 +76,10 @@ export default async function handler(
 
     try {
         // Log headers for debugging CSRF issues
-        console.log('Request headers:', {
-            'content-type': req.headers['content-type'],
-            'x-csrf-token': req.headers['x-csrf-token'] ? 'present' : 'missing'
-        });
+        // console.log('Request headers:', {
+        //     'content-type': req.headers['content-type'],
+        //     'x-csrf-token': req.headers['x-csrf-token'] ? 'present' : 'missing'
+        // });
 
         // Validate request body
         const validation = validateRequest(req.body);
@@ -94,17 +94,17 @@ export default async function handler(
 
         // Security checks
         if (honeypot) {
-            console.log('Honeypot triggered');
+            // console.log('Honeypot triggered');
             return res.status(400).json({ message: 'Invalid submission' });
         }
 
         // Verify CSRF token
         const storedToken = req.headers['x-csrf-token'];
         if (!token || token !== storedToken) {
-            console.log('CSRF token mismatch:', {
-                providedToken: token ? 'present' : 'missing',
-                storedToken: storedToken ? 'present' : 'missing'
-            });
+            // console.log('CSRF token mismatch:', {
+            //     providedToken: token ? 'present' : 'missing',
+            //     storedToken: storedToken ? 'present' : 'missing'
+            // });
             return res.status(403).json({
                 message: 'Invalid token',
                 detail: 'CSRF token validation failed'
@@ -137,7 +137,7 @@ export default async function handler(
         const timeDiff = Math.abs(Date.now() - submissionTime.getTime());
         // Allow submissions within a 30-second window to account for network delay and client-server time differences
         if (timeDiff > 30000) {
-            console.log('Spam detection triggered: suspicious timestamp', { timeDiff, submissionTime });
+            console.error('Spam detection triggered: suspicious timestamp', { timeDiff, submissionTime });
             return res.status(400).json({ message: 'Invalid submission: timestamp out of acceptable range' });
         }
 
@@ -172,7 +172,7 @@ export default async function handler(
         });
 
         // Log email sending result
-        console.log('Email sending result:', emailResult);
+        // console.log('Email sending result:', emailResult);
 
         // Set cookie for rate limiting
         res.setHeader('Set-Cookie', `last_submission=${Date.now()}; Path=/; HttpOnly`);

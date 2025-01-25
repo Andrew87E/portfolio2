@@ -22,7 +22,7 @@ export const ContactForm: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     // Implement form submission logic here
-    console.log(formData);
+    // console.log(formData);
   };
 
   return (
