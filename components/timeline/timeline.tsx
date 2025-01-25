@@ -5,7 +5,7 @@ import styles from "./timeline.module.sass";
 export const Timeline = () => {
   const experiences = [
     {
-      period: "2023 - Present",
+      period: "2022 - Present",
       role: "Software Engineer at Tifco Industries",
       description:
         "Leading API development with DotNetCore and building innovative warehouse solutions. Developed SwiftUI iPad apps, Flutter applications, and maintained Linux server VMs while crafting robust SQL solutions.",
@@ -14,7 +14,7 @@ export const Timeline = () => {
     },
     {
       period: "2020 - 2022",
-      role: "Software Engineer at Hometown Insurance - Jada Butler",
+      role: "Software Engineer at Hometown Insurance - Jada Phillips",
       description:
         "Optimized program performance using Electron, Node.js, React.js, and Next.js. Led development of office management applications, achieving $75K in annual cost savings.",
       icon: <Building2 className="w-6 h-6 text-lime-500" />,
