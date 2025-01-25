@@ -249,7 +249,7 @@ const Home = () => {
                 "
                     onClick={() => {
                       // download resume
-                      window.open("/Andrew_Edwards_Resume.docx", "_blank");
+                      window.open("/Andrew_Edwards_Resume.pdf", "_blank");
                     }}
                   >
                     <Download className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
