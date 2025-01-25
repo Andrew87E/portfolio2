@@ -14,7 +14,7 @@ export const Timeline = () => {
     },
     {
       period: "2020 - 2022",
-      role: "Software Engineer at Hometown Insurance",
+      role: "Software Engineer at Hometown Insurance - Jada Butler",
       description:
         "Optimized program performance using Electron, Node.js, React.js, and Next.js. Led development of office management applications, achieving $75K in annual cost savings.",
       icon: <Building2 className="w-6 h-6 text-lime-500" />,
