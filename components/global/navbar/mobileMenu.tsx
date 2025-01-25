@@ -59,12 +59,12 @@ export const MobileMenu = ({
         {showMenu ? (
           <HiOutlineX
             className="transition-transform duration-[2s] transform rotate-180"
-            color="white"
+            color={`${darkModeValue ? "white" : "black"}`}
           />
         ) : (
           <RiMenu3Line
             className="transition-transform duration-[2s] transform rotate-180"
-            color="white"
+            color={`${darkModeValue ? "white" : "black"}`}
           />
         )}
       </button>
