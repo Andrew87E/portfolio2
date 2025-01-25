@@ -31,7 +31,7 @@ export const Navbar = ({
       );
       const data = await res.json();
       const phase = data[0].Phase;
-      console.log(phase);
+      // console.log(phase);
       setMoonPhase(phase);
 
       switch (phase) {
@@ -59,7 +59,7 @@ export const Navbar = ({
           break;
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setCurrentMoon(0);
     }
   };
