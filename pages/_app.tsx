@@ -65,7 +65,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
             className="bg-black bg-opacity-15 "
           />
           <Analytics />
-          <GoogleTagManager gtmId={process.env.GTAG!} />
+          <GoogleTagManager gtmId="G-W8DXY36HSK" />
           <Component {...pageProps} />
         </motion.div>
       </AnimatePresence>

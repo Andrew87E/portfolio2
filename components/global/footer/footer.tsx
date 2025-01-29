@@ -4,6 +4,7 @@ import { AiOutlineFilePdf, AiFillGithub } from "react-icons/ai";
 import { BsLinkedin } from "react-icons/bs";
 import { Tooltip } from "react-tooltip";
 import FooterButton from "./footerbuttons";
+import Link from "next/link";
 
 export const Footer: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -88,7 +89,7 @@ export const Footer: React.FC = () => {
       )} */}
       <div className="text-center p-4 dark:text-white text-black">
         © {year}
-        <a
+        <Link
           className="text-black dark:text-white hover:text-green-500"
           href="https://github.com/andrew87e"
         >
@@ -103,7 +104,7 @@ export const Footer: React.FC = () => {
               </span>
             );
           })}
-        </a>
+        </Link>
       </div>
     </footer>
   );

@@ -1,6 +1,7 @@
 // components/ContactForm.tsx
 import Image from "next/image";
 import React, { useState, FormEvent } from "react";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 export const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -94,6 +95,20 @@ export const ContactForm: React.FC = () => {
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline dark:bg-blue-600 dark:hover:bg-blue-800"
+            onClick={() =>
+              sendGTMEvent({
+                event: "buttonClicked",
+                value: {
+                  type: "contact submit",
+                  data: {
+                    ...formData,
+                    page: "contact",
+                    action: "submit",
+                    time: new Date(),
+                  },
+                },
+              })
+            }
           >
             Send Message
           </button>
