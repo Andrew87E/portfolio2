@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Info } from "lucide-react";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { Tooltip } from "react-tooltip";
 
 type CardProps = {
@@ -127,7 +128,18 @@ export const SpotlightCard = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 hover:bg-lime-500/10 rounded-full transition-colors"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    sendGTMEvent({
+                      event: "github_click",
+                      data: {
+                        project: title,
+                        url: github,
+                        type: "source",
+                        date: new Date().toISOString(),
+                      },
+                    });
+                  }}
                 >
                   <Github className="w-5 h-5 text-lime-500" />
                 </Link>
@@ -143,7 +155,18 @@ export const SpotlightCard = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 hover:bg-lime-500/10 rounded-full transition-colors"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    sendGTMEvent({
+                      event: "deploy_click",
+                      data: {
+                        project: title,
+                        url: link,
+                        type: "deploy",
+                        date: new Date().toISOString(),
+                      },
+                    });
+                  }}
                 >
                   <ExternalLink className="w-5 h-5 text-lime-500" />
                 </Link>
@@ -157,7 +180,17 @@ export const SpotlightCard = ({
                   data-tooltip-id={`contact-${title}`}
                   data-tooltip-content="Contact me for more details about this closed source project!"
                   className="p-2 hover:bg-lime-500/10 rounded-full transition-colors"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    sendGTMEvent({
+                      event: "contact_click",
+                      data: {
+                        project: title,
+                        type: "contact",
+                        date: new Date().toISOString(),
+                      },
+                    });
+                  }}
                 >
                   <Info className="w-5 h-5 text-lime-500" />
                 </Link>

@@ -3,6 +3,7 @@ import { AnimatedComponent, Typewriter } from "react-style-text";
 import { Code, Database, Download, Mail, Terminal } from "lucide-react";
 import Head from "next/head";
 import Link from "next/link";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 interface PersonSchema {
   "@context": string;
@@ -250,6 +251,14 @@ const Home = () => {
                     onClick={() => {
                       // download resume
                       window.open("/Andrew_Edwards_Resume.pdf", "_blank");
+                      sendGTMEvent({
+                        action: "Download",
+                        data: {
+                          category: "Resume",
+                          label: "Andrew Edwards Resume",
+                          date: new Date().toISOString(),
+                        },
+                      });
                     }}
                   >
                     <Download className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
@@ -271,6 +280,16 @@ const Home = () => {
                   flex items-center gap-2
                 "
                     href="/contact"
+                    onClick={() => {
+                      sendGTMEvent({
+                        action: "Click",
+                        data: {
+                          category: "Contact",
+                          label: "Contact Andrew",
+                          date: new Date().toISOString(),
+                        },
+                      });
+                    }}
                   >
                     <Mail className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
                     Contact Me
