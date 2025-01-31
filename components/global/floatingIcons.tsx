@@ -26,12 +26,12 @@ export const FloatingIcons = (props: Props) => {
       <div className="absolute top-40 right-20 animate-float-delayed">
         <GitBranch size={40} color="#82fa5f" opacity={0.4} />
       </div>
-      <div className="absolute top-52 left-1/4 animate-float">
+      {/* <div className="absolute top-52 left-1/4 animate-float">
         <History size={40} color="#82fa5f" opacity={0.4} />
       </div>
       <div className="absolute top-52 right-1/4 animate-float">
         <History size={40} color="#82fa5f" opacity={0.4} />
-      </div>
+      </div> */}
       <div className="absolute top-1/2 left-10 animate-float-slow">
         <BugOff size={40} color="#82fa5f" opacity={0.4} />
       </div>
