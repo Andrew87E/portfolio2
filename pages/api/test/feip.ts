@@ -30,7 +30,13 @@ export default function handler(
 
     if (!ipAdd) {
         console.error('No IP address found in request');
-        res.status(500).json({ name: 'John Doe', ipAdd: null });
+        const ips = [
+            "170.171.1.8", // ny
+            "23.79.30.88", // ga
+            "35.155.173.7", // or
+            "17.103.166.82", // tx
+        ]
+        res.status(500).json({ name: 'John Doe', ipAdd: ips[Math.floor(Math.random() * ips.length)] });
     } else {
         console.info(`IP address found: ${ipAdd}`);
         res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate');
