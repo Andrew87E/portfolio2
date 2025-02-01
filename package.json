@@ -23,6 +23,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@types/react": "18.2.45",
     "@vercel/analytics": "^1.4.1",
+    "@vercel/speed-insights": "^1.1.0",
     "eslint": "8.55.0",
     "eslint-config-next": "14.0.4",
     "framer-motion": "^10.16.16",
