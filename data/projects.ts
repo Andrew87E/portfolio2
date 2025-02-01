@@ -78,6 +78,18 @@ export const projects: Project[] = [
         type: ProjectType.OpenSource,
     },
     {
+        project: "Dynamic State Explorer",
+        desc: "A location-aware web application that automatically displays information about US states and cities based on the user's current location. Features include real-time geolocation through a custom IP detection API, dynamic content loading from Wikipedia, and comprehensive geographical data from GeoNames. Built with vanilla JavaScript and jQuery for optimal performance, the app includes interactive features like dark/light theme switching, population statistics, and a custom contact form. Users can simulate different locations using a VPN to explore various states' information. Implements local storage for enhanced performance and includes responsive design for all device sizes.",
+        deploy: {
+            url: "https://andrew87e.github.io/urban-octo-broccoli/"
+        },
+        github: "https://github.com/Andrew87E/urban-octo-broccoli",
+        alt: "Deployed Link",
+        img: "https://github.com/Andrew87E/urban-octo-broccoli/blob/main/screenshot.png?raw=true",
+        badges: ["HTML", "CSS", "JavaScript", "jQuery", "Wikipedia API", "GeoNames API", "REST API", "Geolocation"],
+        type: ProjectType.Personal
+    },
+    {
         project: "Weather API Server",
         desc: "A high-performance API server powering a modern weather application. Features intelligent caching with Redis and robust user management via PostgreSQL, optimizing third-party API consumption while delivering real-time weather data. Implements multiple weather data providers including OpenWeather, Pirate Weather, and Dark Sky for comprehensive coverage.",
         deploy: {},
