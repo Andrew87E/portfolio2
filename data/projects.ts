@@ -85,7 +85,7 @@ export const projects: Project[] = [
         },
         github: "https://github.com/Andrew87E/urban-octo-broccoli",
         alt: "Deployed Link",
-        img: "https://raw.githubusercontent.com/Andrew87E/urban-octo-broccoli/refs/heads/main/screenshot.png?token=GHSAT0AAAAAAC5QIKHQYSCY5MJBQ5P3GCDAZ46NZJA",
+        img: "https://github.com/Andrew87E/urban-octo-broccoli/blob/main/screenshot.png?raw=true",
         badges: ["HTML", "CSS", "JavaScript", "jQuery", "Wikipedia API", "GeoNames API", "REST API", "Geolocation"],
         type: ProjectType.Personal
     },
