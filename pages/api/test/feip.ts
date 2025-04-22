@@ -46,6 +46,6 @@ export default function handler(
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
         res.setHeader('Access-Control-Max-Age', '86400');
         res.setHeader('Vary', 'Origin');
-        res.status(200).json({ name: 'John Doe', ipAdd });
+        res.status(200).json({ name: 'John Doe', ipAdd: ipAdd });
     }
 }
