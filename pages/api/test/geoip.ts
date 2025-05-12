@@ -6,6 +6,16 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
+    // Handle preflight OPTIONS request
+    if (req.method === 'OPTIONS') {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        res.setHeader('Access-Control-Max-Age', '86400');
+        res.status(200).end();
+        return;
+    }
+
     // we want to pull data about the ip address of the request req.body.ip
     const ip = req.query.ip;
     console.log(ip);
@@ -25,6 +35,10 @@ export default async function handler(
         res.status(200).json(data);
     } else {
         console.error('Error fetching data');
+        // Also add CORS headers to error responses
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
         res.status(500).json({ error: 'Error fetching data' });
     }
 }

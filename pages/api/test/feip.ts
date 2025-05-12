@@ -7,8 +7,18 @@ type Data = {
 
 export default function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Data>
+    res: NextApiResponse<Data | {}>
 ) {
+    // Handle preflight OPTIONS request
+    if (req.method === 'OPTIONS') {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        res.setHeader('Access-Control-Max-Age', '86400');
+        res.status(200).end();
+        return;
+    }
+
     // we want to capture the ip address of the request
     const forwarded = req.headers["x-forwarded-for"];
     console.log(forwarded);

@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    // Set CORS headers right at the beginning for all types of responses
     res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
     res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -41,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
 
         // if existing entry is older than 2 days its ok to insert
-        if (existingEntry && new Date().getTime() - existingEntry._id.getTimestamp().getTime() > 2 * 24 * 60 * 60 * 1000) {
+        if (existingEntry && new Date().getTime() - existingEntry._id.getTimestamp().getTime() < 2 * 24 * 60 * 60 * 1000) {
             return res.status(420).json({
                 message: 'Conflict: Email or IP address already exists.',
             });
